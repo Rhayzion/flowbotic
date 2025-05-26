@@ -1,229 +1,234 @@
-         // Initialize GSAP
+document.addEventListener("DOMContentLoaded", () => {
+    // Utility: Safe query selector
+    const $ = (selector, context = document) => context.querySelector(selector);
+    const $$ = (selector, context = document) => context.querySelectorAll(selector);
+
+    // Navigation Scroll Effect
+    const navbar = $("#navbar");
+    if (navbar) {
+        window.addEventListener("scroll", () => {
+            navbar.classList.toggle("scrolled", window.scrollY > 50);
+        });
+    }
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = $("#mobile-menu-btn");
+    const mobileMenu = $("#mobile-menu");
+    const mobileMenuClose = $("#mobile-menu-close");
+    const mobileMenuLinks = $$(".mobile-menu-link a", mobileMenu);
+
+    if (mobileMenuBtn && mobileMenu && mobileMenuClose) {
+        const toggleMenu = (open) => {
+            mobileMenu.classList.toggle("open", open);
+            mobileMenu.setAttribute("aria-hidden", !open);
+            document.body.style.overflow = open ? "hidden" : "";
+        };
+
+        mobileMenuBtn.addEventListener("click", () => toggleMenu(true));
+        mobileMenuClose.addEventListener("click", () => toggleMenu(false));
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener("click", () => toggleMenu(false));
+        });
+
+        // Keyboard accessibility
+        mobileMenuBtn.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                toggleMenu(true);
+            }
+        });
+    }
+
+    // GSAP Animations
+    if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
         gsap.registerPlugin(ScrollTrigger);
 
-        // Initialize Swiper
-        const swiper = new Swiper('.swiper', {
+        // Respect reduced motion
+        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        if (!prefersReducedMotion) {
+            // Hero Animation
+            gsap.from(".hero-text", {
+                opacity: 0,
+                y: 80,
+                duration: 0.8,
+                ease: "power3.out",
+                delay: 0.3
+            });
+
+            gsap.from(".hero-image-container", {
+                opacity: 0,
+                x: 80,
+                duration: 0.8,
+                ease: "power3.out",
+                delay: 0.5
+            });
+
+            gsap.from(".floating-element", {
+                opacity: 0,
+                y: 40,
+                duration: 0.6,
+                stagger: 0.15,
+                ease: "power3.out",
+                delay: 0.8
+            });
+
+            // Feature, Pricing, and Testimonial Cards
+            $$(".feature-card, .pricing-card").forEach((card, i) => {
+                gsap.from(card, {
+                    scrollTrigger: {
+                        trigger: card,
+                        start: "top 85%",
+                        toggleActions: "play none none reverse"
+                    },
+                    opacity: 0,
+                    y: 40,
+                    duration: 0.6,
+                    ease: "power3.out",
+                    delay: i * 0.1
+                });
+            });
+
+            // FAQ Animation
+            $$(".faq-item").forEach((item, i) => {
+                gsap.from(item, {
+                    scrollTrigger: {
+                        trigger: item,
+                        start: "top 85%",
+                        toggleActions: "play none none reverse"
+                    },
+                    opacity: 0,
+                    y: 30,
+                    duration: 0.5,
+                    ease: "power3.out",
+                    delay: i * 0.1
+                });
+            });
+        }
+    }
+
+    // Stats Counter Animation
+    const animateCounters = () => {
+        $$(".stat-number").forEach(counter => {
+            const target = +counter.getAttribute("data-count");
+            gsap.to(counter, {
+                innerText: target,
+                duration: 1.5,
+                ease: "power2.out",
+                snap: { innerText: 1 },
+                onUpdate: () => {
+                    counter.innerText = Math.ceil(counter.innerText);
+                }
+            });
+        });
+    };
+
+    if ($(".stats")) {
+        ScrollTrigger.create({
+            trigger: ".stats",
+            start: "top 80%",
+            onEnter: animateCounters,
+            once: true // Run only once
+        });
+    }
+
+    // Testimonial Slider
+    if (typeof Swiper !== "undefined" && $(".swiper")) {
+        new Swiper(".swiper", {
             slidesPerView: 1,
-            spaceBetween: 30,
+            spaceBetween: 16,
             loop: true,
+            autoplay: {
+                delay: 6000,
+                disableOnInteraction: false
+            },
             navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev"
             },
             breakpoints: {
-                768: {
-                    slidesPerView: 2,
-                }
+                768: { slidesPerView: 2, spaceBetween: 20 },
+                1024: { slidesPerView: 3, spaceBetween: 24 }
             }
         });
+    }
 
-        // Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenuClose = document.getElementById('mobile-menu-close');
-        const mobileMenu = document.getElementById('mobile-menu');
+    // FAQ Toggle
+    const faqQuestions = $$(".faq-question");
+    faqQuestions.forEach(question => {
+        question.addEventListener("click", () => {
+            const faqItem = question.parentElement;
+            const isActive = faqItem.classList.contains("active");
+            faqItem.classList.toggle("active", !isActive);
+            question.setAttribute("aria-expanded", !isActive);
 
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.add('open');
-            document.body.style.overflow = 'hidden';
-        });
-
-        mobileMenuClose.addEventListener('click', () => {
-            mobileMenu.classList.remove('open');
-            document.body.style.overflow = '';
-        });
-
-        // Close mobile menu when clicking on links
-        document.querySelectorAll('.mobile-menu-link a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('open');
-                document.body.style.overflow = '';
-            });
-        });
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
+            // Smooth height animation
+            const answer = faqItem.querySelector(".faq-answer");
+            if (!isActive) {
+                answer.style.maxHeight = `${answer.scrollHeight}px`;
             } else {
-                navbar.classList.remove('scrolled');
+                answer.style.maxHeight = 0;
             }
         });
 
-        // FAQ accordion
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const item = question.parentElement;
-                item.classList.toggle('active');
-                
-                // Close other open items
-                document.querySelectorAll('.faq-item').forEach(otherItem => {
-                    if (otherItem !== item && otherItem.classList.contains('active')) {
-                        otherItem.classList.remove('active');
-                    }
-                });
+        // Keyboard accessibility
+        question.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                question.click();
+            }
+        });
+    });
+
+    // Particle Animation (Optimized)
+    const particlesContainer = $("#particles");
+    if (particlesContainer) {
+        const maxParticles = 20; // Limit particle count
+        let particleCount = 0;
+
+        const createParticle = () => {
+            if (particleCount >= maxParticles) return;
+
+            const particle = document.createElement("div");
+            particle.classList.add("particle");
+            const size = Math.random() * 4 + 2;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.top = `${Math.random() * 100}%`;
+            particle.style.animationDuration = `${Math.random() * 4 + 4}s`;
+            particlesContainer.appendChild(particle);
+            particleCount++;
+
+            setTimeout(() => {
+                particle.remove();
+                particleCount--;
+            }, 8000);
+        };
+
+        // Create particles sparingly on mobile
+        const interval = window.innerWidth < 768 ? 500 : 300;
+        setInterval(createParticle, interval);
+    }
+
+    // Custom Cursor (Desktop Only)
+    if (window.innerWidth >= 768) {
+        const cursor = document.createElement("div");
+        cursor.classList.add("custom-cursor");
+        document.body.appendChild(cursor);
+
+        document.addEventListener("mousemove", (e) => {
+            gsap.to(cursor, {
+                x: e.clientX - 7,
+                y: e.clientY - 7,
+                duration: 0.2,
+                ease: "power2.out"
             });
         });
 
-        // Hero Animation
-        gsap.to(".hero-title", {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: "power3.out",
-            delay: 0.3
+        $$(".btn, .feature-card, .pricing-card, .testimonial-card, .social-link").forEach(el => {
+            el.addEventListener("mouseenter", () => cursor.classList.add("active"));
+            el.addEventListener("mouseleave", () => cursor.classList.remove("active"));
         });
-
-        gsap.to(".hero-subtitle", {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: "power3.out",
-            delay: 0.6
-        });
-
-        gsap.to(".cta-buttons", {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: "power3.out",
-            delay: 0.9
-        });
-
-        gsap.to(".hero-image-container", {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            duration: 1.5,
-            ease: "elastic.out(1, 0.5)",
-            delay: 1.2
-        });
-
-        // Floating elements animation
-        const floatingElements = document.querySelectorAll(".floating-element");
-        floatingElements.forEach((el, index) => {
-            gsap.fromTo(el, {
-                opacity: 0,
-                x: index % 2 === 0 ? -50 : 50,
-                duration: 1,
-                delay: 1.5 + index * 0.3,
-                ease: "power3.out"
-            },
-            {
-                opacity: 1,
-                y: 0,
-            }
-        );
-        });
-
-        // Features animation
-        gsap.utils.toArray(".feature-card").forEach((card, i) => {
-            gsap.fromTo(card, {
-                scrollTrigger: {
-                    trigger: card,
-                    start: "top 80%",
-                    toggleActions: "play none none reverse"
-                },
-                opacity: 0,
-                y: 50,
-                duration: 0.8,
-                delay: i * 0.1,
-                ease: "power3.out"
-            },
-            {
-                opacity: 1,
-                y: 0,
-                duration: 0.8,
-                ease: "power3.out"
-            });
-        });
-
-        // Stats animation
-        gsap.utils.toArray(".stat-item").forEach((stat, i) => {
-            gsap.fromTo(stat, {
-                scrollTrigger: {
-                    trigger: ".stats",
-                    start: "top 70%",
-                    toggleActions: "play none none none"
-                },
-                opacity: 0,
-                y: 50,
-                duration: 0.8,
-                delay: i * 0.2,
-                ease: "power3.out",
-                onComplete: () => animateCounters()
-            },
-            {
-                opacity: 1,
-                y: 0,
-                duration: 0.8,
-                ease: "power3.out"
-            }
-        
-        );
-        });
-
-        // Animate counter numbers
-        function animateCounters() {
-            const counters = document.querySelectorAll(".stat-number");
-            const speed = 200;
-            
-            counters.forEach(counter => {
-                const target = +counter.getAttribute("data-count");
-                const count = +counter.innerText;
-                const increment = target / speed;
-                
-                if (count < target) {
-                    counter.innerText = Math.ceil(count + increment);
-                    setTimeout(animateCounters, 1);
-                } else {
-                    counter.innerText = target;
-                }
-            });
-        }
-
-        // Create particles
-        function createParticles() {
-            const container = document.getElementById("particles");
-            const particleCount = window.innerWidth < 768 ? 20 : 40;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement("div");
-                particle.classList.add("particle");
-                
-                // Random properties
-                const size = Math.random() * 6 + 2;
-                const posX = Math.random() * 100;
-                const posY = Math.random() * 100;
-                const delay = Math.random() * 5;
-                const duration = Math.random() * 15 + 15;
-                const opacity = Math.random() * 0.4 + 0.1;
-                
-                // Apply styles
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                particle.style.left = `${posX}%`;
-                particle.style.top = `${posY}%`;
-                particle.style.background = `rgba(255, 255, 255, ${opacity})`;
-                particle.style.borderRadius = `${size}px`;
-                
-                container.appendChild(particle);
-                
-                // Animate particle
-                gsap.to(particle, {
-                    x: `${Math.random() * 100 - 50}px`,
-                    y: `${Math.random() * 100 - 50}px`,
-                    duration: duration,
-                    delay: delay,
-                    repeat: -1,
-                    yoyo: true,
-                    ease: "sine.inOut"
-                });
-            }
-        }
-
-        // Initialize
-        document.addEventListener("DOMContentLoaded", () => {
-            createParticles();
-        });
-  
+    }
+});
