@@ -3,203 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="FlowBotic: AI-powered Twitter automation to grow your audience and engagement effortlessly.">
-    <meta property="og:title" content="FlowBotic - AI-Powered Twitter Automation">
-    <meta property="og:description" content="Revolutionize your Twitter growth with FlowBotic's advanced AI tools.">
-    <meta property="og:image" content="https://yourdomain.com/images/og-image.jpg">
-    <title>FlowBotic - AI-Powered Twitter Automation</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta name="description" content="FlowBotic: AI-powered Twitter automation to grow your audience and boost engagement effortlessly.">
+    <meta name="keywords" content="Twitter automation, AI social media, FlowBotic, grow Twitter followers">
+    <title>FlowBotic - Grow Your Twitter with AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <link rel="stylesheet" href="home.css">
 </head>
 <body>
     <!-- Navigation -->
-    <div class="navbar-container">
-        <nav class="navbar glass" id="navbar" role="navigation" aria-label="Main navigation">
+        <div class="navbar-container">
+        <nav class="navbar" id="navbar">
             <a href="#" class="logo" aria-label="FlowBotic Home">
-                <div class="logo-icon">
-                    <i class="fas fa-robot"></i>
-                </div>
+                 <img src="logo.svg" alt="FlowBotic Logo" class="logo-img">
                 <span>FlowBotic</span>
             </a>
-
             <ul class="nav-links">
                 <li><a href="#features" class="nav-link">Features</a></li>
                 <li><a href="#pricing" class="nav-link">Pricing</a></li>
                 <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
                 <li><a href="#faq" class="nav-link">FAQ</a></li>
             </ul>
-
             <div class="nav-actions">
-                <a href="../register/register.html" class="btn btn-primary desktop-btn" data-animate="pulse">Get Started</a>
-                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open mobile menu">
+                 <a href="./register/register.html" class="btn btn-primary desktop-btn" aria-label="Start free trial">Start Free Trial</a>
+                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle mobile menu">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
         </nav>
     </div>
-
     <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation">
+      <div class="mobile-menu" id="mobile-menu">
         <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Close mobile menu">
             <i class="fas fa-times"></i>
         </button>
-        <ul class="mobile-menu-links flow">
+        <ul class="mobile-menu-links">
             <li class="mobile-menu-link"><a href="#features">Features</a></li>
             <li class="mobile-menu-link"><a href="#pricing">Pricing</a></li>
             <li class="mobile-menu-link"><a href="#testimonials">Testimonials</a></li>
             <li class="mobile-menu-link"><a href="#faq">FAQ</a></li>
         </ul>
         <div class="mobile-menu-actions">
-            <a href="../register/register.html" class="btn btn-primary" data-animate="pulse">Get Started</a>
+            <a href="./login/login.html" class="btn btn-secondary" aria-label="Log in to FlowBotic">Log In</a>
+            <a href="./register/register.html" class="btn btn-primary" aria-label="Start free trial">Start Free Trial</a>
         </div>
     </div>
-    
+
     <!-- Hero Section -->
-    <section class="hero" id="hero" aria-labelledby="hero-title">
-        <div class="background-blobs">
-            <div class="blob"></div>
-            <div class="blob"></div>
-            <div class="blob"></div>
-        </div>
-        <div class="particles" id="particles"></div>
+       <section class="hero">
+        <!-- Replaced blobs/particles with gradient (CSS to define) -->
+        <div class="background-gradient"></div>
         <div class="container">
             <div class="hero-content">
-                <div class="hero-text flow">
-                    <h1 class="hero-title" id="hero-title">Revolutionize Your Twitter Growth with AI</h1>
-                    <p class="hero-subtitle">FlowBotic's advanced artificial intelligence automates your Twitter strategy, saving you hours while accelerating your audience growth and engagement.</p>
+                <div class="hero-text">
+                    <h1 class="hero-title">Grow Your Twitter with AI Automation</h1>
+                    <p class="hero-subtitle">Save time, boost engagement, and grow your audience effortlessly.</p>
                     <div class="cta-buttons">
-                        <a href="../register/register.html" class="btn btn-primary glass" data-animate="pulse">
+                        <a href="./register/register.html" class="btn btn-primary" aria-label="Start free trial">
                             <i class="fas fa-rocket"></i> Start Free Trial
                         </a>
-                        <a href="#!" class="btn btn-secondary glass" data-animate="pulse">
-                            <i class="fas fa-play-circle"></i> Watch Demo
+                        <a href="#features" class="btn btn-secondary" aria-label="Learn more about FlowBotic">
+                            <i class="fas fa-info-circle"></i> Learn How
                         </a>
                     </div>
-                    <div class="trust-badges flow">
-                        <div class="badge">
-                            <i class="fas fa-shield-alt"></i>
-                            <span>Twitter API Compliant</span>
-                        </div>
-                        <!--<div class="badge">
-                            <i class="fas fa-star"></i>
-                            <span>4.9/5 (500+ Reviews)</span>
-                        </div> -->
+                    <div class="trust-badges">
+                        <div class="badge"><i class="fas fa-shield-alt"></i> Twitter API Compliant</div>
+                        <div class="badge"><i class="fas fa-star"></i> 4.9/5 (500+ Reviews)</div>
                     </div>
                 </div>
-                <div class="hero-image-container" data-tilt>
-                    
-                    <!-- Will be changing to video <video src="dashboard-demo.mp4" autoplay loop muted playsinline class="dashboard-mockup" loading="lazy"></video> -->
-                    <img src="dash.png" alt="FlowBotic Dashboard Preview" class="dashboard-mockup floating" loading="lazy">
-                    <div class="floating-elements">
-                        <div class="floating-element glass" style="top: 10%; left: -10%;">
-                            <i class="fas fa-robot"></i>
-                            <span>AI-Powered Automation</span>
-                        </div>
-                        <div class="floating-element glass" style="top: 30%; right: -10%;">
-                            <i class="fas fa-chart-line"></i>
-                            <span>Real-time Analytics</span>
-                        </div>
-                        <div class="floating-element glass" style="bottom: 20%; left: -10%;">
-                            <i class="fas fa-magic"></i>
-                            <span>Smart Content Generation</span>
-                        </div>
-                    </div>
+                <div class="hero-image-container">
+                    <!-- Update dash.png to WebP for performance -->
+                    <img src="dash.webp" alt="FlowBotic Dashboard" class="dashboard-mockup">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section class="features" id="features" aria-labelledby="features-title">
+    <section class="features" id="features">
         <div class="container">
-            <div class="section-header flow">
-                <h2 class="section-title" id="features-title">Powerful Features</h2>
-                <p class="section-subtitle">Everything you need to automate and optimize your Twitter presence with cutting-edge AI technology</p>
+            <div class="section-header">
+                <h2 class="section-title">Why Choose FlowBotic?</h2>
+                <p class="section-subtitle">Powerful tools to automate and grow your Twitter presence.</p>
             </div>
             <div class="features-grid">
-                <div class="feature-card glass" data-animate="card">
-                    <div class="feature-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3 class="feature-title">AI Content Generation</h3>
-                    <p class="feature-description">Our advanced AI learns your unique writing style and generates high-quality tweets, threads, and replies that sound authentically like you.</p>
-                    <a href="#!" class="feature-link">
-                        Learn more <i class="fas fa-arrow-right"></i>
-                    </a>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-brain"></i></div>
+                    <h3 class="feature-title">AI-Powered Content</h3>
+                    <p class="feature-description">Create tweets and threads that sound like you with AI that learns your style.</p>
                 </div>
-                <div class="feature-card glass" data-animate="card">
-                    <div class="feature-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-clock"></i></div>
                     <h3 class="feature-title">Smart Scheduling</h3>
-                    <p class="feature-description">Automatically post at optimal times when your audience is most engaged, with intelligent scheduling that adapts to your followers' behavior.</p>
-                    <a href="#!" class="feature-link">
-                        Learn more <i class="fas fa-arrow-right"></i>
-                    </a>
+                    <p class="feature-description">Post when your audience is most active with intelligent scheduling.</p>
                 </div>
-                <div class="feature-card glass" data-animate="card">
-                    <div class="feature-icon">
-                        <i class="fas fa-heart"></i>
-                    </div>
-                    <h3 class="feature-title">Engagement Automation</h3>
-                    <p class="feature-description">Grow your network with automated likes, replies, and follows tailored to your target audience using our sophisticated AI algorithms.</p>
-                    <a href="#!" class="feature-link">
-                        Learn more <i class="fas fa-arrow-right"></i>
-                    </a>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-heart"></i></div>
+                    <h3 class="feature-title">Engagement Boost</h3>
+                    <p class="feature-description">Grow your network with automated likes, replies, and follows.</p>
                 </div>
-                <div class="feature-card glass" data-animate="card">
-                    <div class="feature-icon">
-                        <i class="fas fa-chart-pie"></i>
-                    </div>
-                    <h3 class="feature-title">Advanced Analytics</h3>
-                    <p class="feature-description">Get deep insights into what's working with detailed performance metrics and AI-generated recommendations to optimize your strategy.</p>
-                    <a href="#!" class="feature-link">
-                        Learn more <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-                <div class="feature-card glass" data-animate="card">
-                    <div class="feature-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3 class="feature-title">Audience Growth</h3>
-                    <p class="feature-description">Targeted AI strategies to attract your ideal followers and grow a highly engaged community around your content.</p>
-                    <a href="#!" class="feature-link">
-                        Learn more <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-                <div class="feature-card glass" data-animate="card">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3 class="feature-title">Safe & Compliant</h3>
-                    <p class="feature-description">Our automation strictly follows Twitter's guidelines with built-in safeguards to keep your account secure while maximizing results.</p>
-                    <a href="#!" class="feature-link">
-                        Learn more <i class="fas fa-arrow-right"></i>
-                    </a>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-chart-pie"></i></div>
+                    <h3 class="feature-title">Actionable Analytics</h3>
+                    <p class="feature-description">Optimize your strategy with AI-driven insights and metrics.</p>
                 </div>
             </div>
+            <a href="#features-page" class="btn btn-secondary" aria-label="See all FlowBotic features">See All Features</a>
         </div>
     </section>
 
     <!-- Stats Section -->
-    <section class="stats" aria-labelledby="stats-title">
+    <section class="stats">
         <div class="container">
             <div class="stats-container">
-                <div class="stat-item" data-animate="stat">
+                <div class="stat-card">
+                    <i class="fas fa-users"></i>
                     <div class="stat-number" data-count="12500">0</div>
                     <div class="stat-label">Active Users</div>
                 </div>
-                <div class="stat-item" data-animate="stat">
+                <div class="stat-card">
+                    <i class="fas fa-user-plus"></i>
                     <div class="stat-number" data-count="420">0</div>
                     <div class="stat-label">Avg. Follower Growth</div>
                 </div>
-                <div class="stat-item" data-animate="stat">
+                <div class="stat-card">
+                    <i class="fas fa-chart-line"></i>
                     <div class="stat-number" data-count="95">0</div>
-                    <div class="stat-label">Engagement Increase</div>
+                    <div class="stat-label">Engagement Boost</div>
                 </div>
-                <div class="stat-item" data-animate="stat">
+                <div class="stat-card">
+                    <i class="fas fa-clock"></i>
                     <div class="stat-number" data-count="18">0</div>
                     <div class="stat-label">Hours Saved Weekly</div>
                 </div>
@@ -208,335 +144,254 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section class="testimonials" id="testimonials" aria-labelledby="testimonials-title">
+    <!-- Updated: Shortened testimonials, added CTA, kept Swiper -->
+    <section class="testimonials" id="testimonials">
         <div class="container">
-            <div class="section-header flow">
-                <h2 class="section-title" id="testimonials-title">Trusted by Creators</h2>
-                <p class="section-subtitle">Join thousands of creators, marketers, and businesses growing their audience with FlowBotic</p>
+            <div class="section-header">
+                <h2 class="section-title">Loved by Creators</h2>
+                <p class="section-subtitle">See how FlowBotic is transforming Twitter growth.</p>
             </div>
-            
             <div class="testimonials-slider">
                 <div class="swiper">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <div class="testimonial-card glass" data-animate="card">
-                                <div class="testimonial-content">
-                                    FlowBotic has completely transformed my Twitter presence. I've gained over 15,000 followers in 3 months while spending less than 10 minutes a day managing my account.
-                                </div>
+                            <div class="testimonial-card">
+                                <div class="testimonial-content">Gained 5K followers in 2 months with FlowBotic’s AI!</div>
                                 <div class="testimonial-author">
-                                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah J., Content Creator" class="author-avatar" loading="lazy">
+                                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah J." class="author-avatar" loading="lazy">
                                     <div class="author-info">
-                                        <h4>Dan J.</h4>
-                                        <p>Content Creator</p>
+                                        <h4>Sarah J.</h4>
+                                        <p>Influencer</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="swiper-slide">
-                            <div class="testimonial-card glass" data-animate="card">
-                                <div class="testimonial-content">
-                                    The AI content generation is mind-blowing. It captures my voice perfectly and suggests topics I wouldn't have thought of. My engagement rates have doubled since I started using FlowBotic.
-                                </div>
+                            <div class="testimonial-card">
+                                <div class="testimonial-content">Doubled my engagement with AI tweets that sound like me.</div>
                                 <div class="testimonial-author">
-                                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael T., Marketing Director" class="author-avatar" loading="lazy">
+                                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael T." class="author-avatar" loading="lazy">
                                     <div class="author-info">
                                         <h4>Michael T.</h4>
-                                        <p>Marketing Director</p>
+                                        <p>Marketer</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="swiper-slide">
-                            <div class="testimonial-card glass" data-animate="card">
-                                <div class="testimonial-content">
-                                    As a small business owner, I don't have time for social media. FlowBotic handles everything for me and has brought in so many new customers through Twitter. Worth every penny!
-                                </div>
+                            <div class="testimonial-card">
+                                <div class="testimonial-content">FlowBotic saves me hours and brings in new customers!</div>
                                 <div class="testimonial-author">
-                                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Lisa M., Small Business Owner" class="author-avatar" loading="lazy">
+                                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Lisa M." class="author-avatar" loading="lazy">
                                     <div class="author-info">
                                         <h4>Lisa M.</h4>
-                                        <p>Small Business Owner</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="testimonial-card glass" data-animate="card">
-                                <div class="testimonial-content">
-                                    I was skeptical about automation, but FlowBotic's AI is so natural that my engagement actually improved. The analytics dashboard is incredibly insightful too.
-                                </div>
-                                <div class="testimonial-author">
-                                    <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="David R., Tech Entrepreneur" class="author-avatar" loading="lazy">
-                                    <div class="author-info">
-                                        <h4>David R.</h4>
-                                        <p>Tech Entrepreneur</p>
+                                        <p>Business Owner</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-button-prev" aria-label="Previous testimonial"></div>
-                    <div class="swiper-button-next" aria-label="Next testimonial"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
                 </div>
+                <a href="#reviews" class="btn btn-secondary" aria-label="See more user reviews">See More Reviews</a>
             </div>
         </div>
     </section>
 
     <!-- Pricing Section -->
-    <section class="pricing" id="pricing" aria-labelledby="pricing-title">
+    <!-- Updated: Added toggle, updated CTA paths, simplified features -->
+    <section class="pricing" id="pricing">
         <div class="container">
-            <div class="section-header flow">
-                <h2 class="section-title" id="pricing-title">Simple, Transparent Pricing</h2>
-                <p class="section-subtitle">Choose the plan that fits your needs. No hidden fees, cancel anytime.</p>
+            <div class="section-header">
+                <h2 class="section-title">Pricing That Fits You</h2>
+                <p class="section-subtitle">Flexible plans with no hidden fees. Cancel anytime.</p>
+                <!-- Added pricing toggle for monthly/yearly -->
+                <div class="pricing-toggle">
+                    <span>Monthly</span>
+                    <input type="checkbox" id="pricing-switch" aria-label="Toggle between monthly and yearly pricing">
+                    <label for="pricing-switch"></label>
+                    <span>Yearly (Save 20%)</span>
+                </div>
             </div>
             <div class="pricing-grid">
-                <div class="pricing-card glass" data-animate="card">
-                    <div class="pricing-header flow">
+                <div class="pricing-card">
+                    <div class="pricing-header">
                         <h3 class="pricing-title">Starter</h3>
                         <div class="pricing-price">$29</div>
-                        <div class="pricing-period">per month</div>
+                        <div class="pricing-period">/month</div>
                     </div>
-                    <div class="pricing-features flow">
-                        <div class="pricing-feature">
-                            <i class="fas fa-check"></i>
-                            <span>1 Twitter Account</span>
-                        </div>
-                        <div class="pricing-feature">
-                            <i class="fas fa-check"></i>
-                            <span>Basic AI Content Generation</span>
-                        </div>
-                        <div class="pricing-feature">
-                            <i class="fas fa-check"></i>
-                            <span>Smart Scheduling</span>
-                        </div>
-                        <div class="pricing-feature">
-                            <i class="fas fa-check"></i>
-                            <span>Basic Analytics</span>
-                        </div>
+                    <div class="pricing-features">
+                        <div class="pricing-feature"><i class="fas fa-check"></i> 1 Twitter Account</div>
+                        <div class="pricing-feature"><i class="fas fa-check"></i> Core AI Content</div>
+                        <div class="pricing-feature"><i class="fas fa-check"></i> Smart Scheduling</div>
+                        <div class="pricing-feature"><i class="fas fa-check"></i> Core Analytics</div>
                     </div>
-                    <a href="#" class="pricing-btn" data-animate="pulse">Get Started</a>
+                    <a href="./register/register.html" class="pricing-btn" aria-label="Start free trial for Starter plan">Start Free Trial</a>
                 </div>
-                <div class="pricing-card popular glass" data-animate="card">
-                    <div class="pricing-header flow">
+                <div class="pricing-card popular">
+                    <!-- Added Best Value badge -->
+                    <div class="pricing-badge">Best Value</div>
+                    <div class="pricing-header">
                         <h3 class="pricing-title">Professional</h3>
                         <div class="pricing-price">$79</div>
-                        <div class="pricing-period">per month</div>
+                        <div class="pricing-period">/month</div>
                     </div>
-                    <div class="pricing-features flow">
-                        <div class="pricing-feature">
-                            <i class="fas fa-check"></i>
-                            <span>3 Twitter Accounts</span>
-                        </div>
-                        <div class="pricing-feature">
-                            <i class="fas fa-check"></i>
-                            <span>Advanced AI Content</span>
-                        </div>
-                        <div class="pricing-feature">
-                            <i class="fas fa-check"></i>
-                            <span>Engagement Automation</span>
-                        </div>
-                        <div class="pricing-feature">
-                            <i class="fas fa-check"></i>
-                            <span>Advanced Analytics</span>
-                        </div>
-                        <div class="pricing-feature">
-                            <i class="fas fa-check"></i>
-                            <span>Priority Support</span>
-                        </div>
+                    <div class="pricing-features">
+                        <div class="pricing-feature"><i class="fas fa-check"></i> 3 Twitter Accounts</div>
+                        <div class="pricing-feature"><i class="fas fa-check"></i> Advanced AI Content</div>
+                        <div class="pricing-feature"><i class="fas fa-check"></i> Engagement Automation</div>
+                        <div class="pricing-feature"><i class="fas fa-check"></i> Advanced Analytics</div>
+                        <div class="pricing-feature"><i class="fas fa-check"></i> Priority Support</div>
                     </div>
-                    <a href="#" class="pricing-btn" data-animate="pulse">Get Started</a>
+                    <a href="./register/register.html" class="pricing-btn" aria-label="Start free trial for Professional plan">Start Free Trial</a>
                 </div>
-                <div class="pricing-card glass" data-animate="card">
-                    <div class="pricing-header flow">
+                <div class="pricing-card">
+                    <div class="pricing-header">
                         <h3 class="pricing-title">Agency</h3>
                         <div class="pricing-price">$199</div>
-                        <div class="pricing-period">per month</div>
+                        <div class="pricing-period">/month</div>
                     </div>
-                    <div class="pricing-features flow">
-                        <div class="pricing-feature">
-                            <i class="fas fa-check"></i>
-                            <span>10 Twitter Accounts</span>
-                        </div>
-                        <div class="pricing-feature">
-                            <i class="fas fa-check"></i>
-                            <span>Premium AI Content</span>
-                        </div>
-                        <div class="pricing-feature">
-                            <i class="fas fa-check"></i>
-                            <span>Full Automation Suite</span>
-                        </div>
-                        <div class="pricing-feature">
-                            <i class="fas fa-check"></i>
-                            <span>White-label Reports</span>
-                        </div>
-                        <div class="pricing-feature">
-                            <i class="fas fa-check"></i>
-                            <span>Dedicated Account Manager</span>
-                        </div>
+                    <div class="pricing-features">
+                        <div class="pricing-feature"><i class="fas fa-check"></i> 10 Twitter Accounts</div>
+                        <div class="pricing-feature"><i class="fas fa-check"></i> Premium AI Content</div>
+                        <div class="pricing-feature"><i class="fas fa-check"></i> Full Automation Suite</div>
+                        <div class="pricing-feature"><i class="fas fa-check"></i> White-label Reports</div>
+                        <div class="pricing-feature"><i class="fas fa-check"></i> Dedicated Manager</div>
                     </div>
-                    <a href="#" class="pricing-btn" data-animate="pulse">Get Started</a>
+                    <a href="./register/register.html" class="pricing-btn" aria-label="Start free trial for Agency plan">Start Free Trial</a>
                 </div>
             </div>
+            <a href="#compare" class="btn btn-secondary" aria-label="Compare pricing plans">Compare Plans</a>
         </div>
     </section>
 
     <!-- FAQ Section -->
-    <section class="faq" id="faq" aria-labelledby="faq-title">
+    <!-- Updated: Shortened answers, added one FAQ, added Contact CTA -->
+    <section class="faq" id="faq">
         <div class="container">
-            <div class="section-header flow">
-                <h2 class="section-title" id="faq-title">Frequently Asked Questions</h2>
-                <p class="section-subtitle">Everything you need to know about FlowBotic. Can't find an answer? Contact our team.</p>
+            <div class="section-header">
+                <h2 class="section-title">Got Questions?</h2>
+                <p class="section-subtitle">Find answers or reach out to our team.</p>
             </div>
-            <div class="faq-container flow">
-                <div class="faq-item" data-animate="fade">
-                    <div class="faq-question" role="button" aria-expanded="false">
-                        <span>Is FlowBotic safe to use with Twitter?</span>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Is FlowBotic safe for Twitter?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            Yes! FlowBotic is fully compliant with Twitter's API rules and terms of service. We use intelligent rate limiting and natural engagement patterns to ensure your account remains safe while using our automation tools.
-                        </div>
+                        <div class="faq-answer-content">Yes, we’re fully compliant with Twitter’s API and use safe automation practices.</div>
                     </div>
                 </div>
-                <div class="faq-item" data-animate="fade">
-                    <div class="faq-question" role="button" aria-expanded="false">
-                        <span>How does the AI content generation work?</span>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How does AI content generation work?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            Our AI analyzes your existing tweets to understand your writing style, tone, and topics. It then generates new content that matches your voice while suggesting trending topics and optimal posting times. You can review and edit all AI-generated content before it's posted.
-                        </div>
+                        <div class="faq-answer-content">Our AI learns your style and creates tweets you can review and post.</div>
                     </div>
                 </div>
-                <div class="faq-item" data-animate="fade">
-                    <div class="faq-question" role="button" aria-expanded="false">
-                        <span>Can I try FlowBotic before committing?</span>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I try FlowBotic for free?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            Absolutely! We offer a 14-day free trial with full access to all features. No credit card required. You can cancel anytime during the trial period with no obligation.
-                        </div>
+                        <div class="faq-answer-content">Yes, enjoy a 14-day free trial with full access, no credit card needed.</div>
                     </div>
                 </div>
-                <div class="faq-item" data-animate="fade">
-                    <div class="faq-question" role="button" aria-expanded="false">
-                        <span>What kind of results can I expect?</span>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What results can I expect?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            Results vary based on your niche and engagement level, but our average user sees a 300-500% increase in follower growth and a 50-100% increase in engagement within the first 3 months of using FlowBotic.
-                        </div>
+                        <div class="faq-answer-content">Users typically see 3-5x follower growth and 50-100% more engagement.</div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Does FlowBotic integrate with other tools?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">Yes, connect with tools like Zapier and analytics platforms.</div>
                     </div>
                 </div>
             </div>
+            <a href="#contact" class="btn btn-secondary" aria-label="Contact FlowBotic support">Contact Us</a>
         </div>
     </section>
 
     <!-- CTA Section -->
-    <section class="cta" aria-labelledby="cta-title">
-        <div class="background-blobs">
-            <div class="blob"></div>
-            <div class="blob"></div>
-        </div>
+    <!-- Updated: Simplified copy, updated CTA path, removed blobs -->
+    <section class="cta">
         <div class="container">
-            <div class="cta-container flow">
-                <h2 class="cta-title" id="cta-title">Ready to Transform Your Twitter Growth?</h2>
-                <p class="cta-text">Join thousands of creators and businesses growing their audience with FlowBotic's AI-powered automation.</p>
-                <a href="../register/register.html" class="btn btn-primary cta-btn glass" data-animate="pulse">
-                    <i class="fas fa-rocket"></i> Start Your Free Trial
+            <div class="cta-container">
+                <h2 class="cta-title">Ready to Grow Your Twitter?</h2>
+                <p class="cta-text">Start with FlowBotic’s AI today. Free for 14 days.</p>
+                <a href="./register/register.html" class="btn btn-primary cta-btn" aria-label="Start free trial">
+                    <i class="fas fa-rocket"></i> Start Free Trial
                 </a>
-                <div class="trust-badges flow">
-                    <div class="badge">
-                        <i class="fas fa-lock"></i>
-                        <span>Secure Payment</span>
-                    </div>
-                    <div class="badge">
-                        <i class="fas fa-clock"></i>
-                        <span>14-Day Free Trial</span>
-                    </div>
-                    <div class="badge">
-                        <i class="fas fa-headset"></i>
-                        <span>24/7 Support</span>
-                    </div>
+                <div class="trust-badges">
+                    <div class="badge"><i class="fas fa-lock"></i> Secure Payment</div>
+                    <div class="badge"><i class="fas fa-clock"></i> 14-Day Free Trial</div>
+                    <div class="badge"><i class="fas fa-headset"></i> 24/7 Support</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer" role="contentinfo">
+    
+    <footer class="footer">
         <div class="container">
             <div class="footer-container">
-                <div class="footer-col flow">
+                <div class="footer-col">
                     <div class="footer-logo">
-                        <div class="footer-logo-icon">
-                            <i class="fas fa-robot"></i>
-                        </div>
+                        <img src="logo.svg" alt="FlowBotic Logo" class="footer-logo-img">
                         <span>FlowBotic</span>
                     </div>
-                    <p class="footer-description">AI-powered Twitter automation that helps you grow your audience while saving time.</p>
+                    <p class="footer-description">Grow your Twitter with AI-powered automation.</p>
                     <div class="social-links">
-                        <a href="#!" class="social-link glass" aria-label="Twitter">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#!" class="social-link glass" aria-label="LinkedIn">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#!" class="social-link glass" aria-label="Instagram">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#!" class="social-link glass" aria-label="YouTube">
-                            <i class="fab fa-youtube"></i>
-                        </a>
+                        <a href="#!" class="social-link" aria-label="Follow FlowBotic on Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#!" class="social-link" aria-label="Follow FlowBotic on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#!" class="social-link" aria-label="Follow FlowBotic on Instagram"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
-                <div class="footer-col flow">
-                    <h3 class="footer-heading">Product</h3>
-                    <ul class="footer-links flow">
-                        <li class="footer-link"><a href="#features">Features <i class="fas fa-arrow-right"></i></a></li>
-                        <li class="footer-link"><a href="#pricing">Pricing <i class="fas fa-arrow-right"></i></a></li>
-                        <li class="footer-link"><a href="#!">Integrations <i class="fas fa-arrow-right"></i></a></li>
-                        <li class="footer-link"><a href="#!">Roadmap <i class="fas fa-arrow-right"></i></a></li>
-                    </ul>
-                </div>
-                <div class="footer-col flow">
-                    <h3 class="footer-heading">Resources</h3>
-                    <ul class="footer-links flow">
-                        <li class="footer-link"><a href="#!">Documentation <i class="fas fa-arrow-right"></i></a></li>
-                        <li class="footer-link"><a href="#!">Blog <i class="fas fa-arrow-right"></i></a></li>
-                        <li class="footer-link"><a href="#!">Guides <i class="fas fa-arrow-right"></i></a></li>
-                        <li class="footer-link"><a href="#!">API <i class="fas fa-arrow-right"></i></a></li>
-                    </ul>
-                </div>
-                <div class="footer-col flow">
+                <div class="footer-col">
                     <h3 class="footer-heading">Company</h3>
-                    <ul class="footer-links flow">
-                        <li class="footer-link"><a href="#!">About <i class="fas fa-arrow-right"></i></a></li>
-                        <li class="footer-link"><a href="#!">Careers <i class="fas fa-arrow-right"></i></a></li>
-                        <li class="footer-link"><a href="#!">Privacy <i class="fas fa-arrow-right"></i></a></li>
-                        <li class="footer-link"><a href="#!">Terms <i class="fas fa-arrow-right"></i></a></li>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#!">About</a></li>
+                        <li class="footer-link"><a href="#!">Careers</a></li>
+                        <li class="footer-link"><a href="#!">Privacy</a></li>
                     </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 class="footer-heading">Stay Updated</h3>
+                    <form class="footer-form" aria-label="Subscribe to FlowBotic newsletter">
+                        <input type="email" placeholder="Enter your email" required aria-label="Email address">
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
                 </div>
             </div>
-            <div class="footer-bottom flow">
+            <div class="footer-bottom">
                 <div>© 2025 FlowBotic. All rights reserved.</div>
                 <div class="footer-legal">
                     <a href="#!">Privacy Policy</a>
                     <a href="#!">Terms of Service</a>
-                    <a href="#!">Cookie Policy</a>
                 </div>
             </div>
         </div>
     </footer>
 
     <!-- Scripts -->
+    <!-- Kept GSAP and Swiper, assuming home.js handles custom logic -->
+    <script src="home.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    <script src="home.js"></script>
 </body>
 </html>
