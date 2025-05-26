@@ -18,23 +18,34 @@ document.addEventListener("DOMContentLoaded", () => {
     const mobileMenuLinks = $$(".mobile-menu-link a", mobileMenu);
 
     if (mobileMenuBtn && mobileMenu && mobileMenuClose) {
+        let isMenuOpen = false; // Track menu state
+
         const toggleMenu = (open) => {
+            isMenuOpen = open;
             mobileMenu.classList.toggle("open", open);
             mobileMenu.setAttribute("aria-hidden", !open);
             document.body.style.overflow = open ? "hidden" : "";
+            mobileMenuBtn.setAttribute("aria-expanded", open); // Accessibility
         };
 
-        mobileMenuBtn.addEventListener("click", () => toggleMenu(true));
+        // Toggle menu on hamburger click
+        mobileMenuBtn.addEventListener("click", () => {
+            toggleMenu(!isMenuOpen);
+        });
+
+        // Close menu on close button click
         mobileMenuClose.addEventListener("click", () => toggleMenu(false));
+
+        // Close menu on link click
         mobileMenuLinks.forEach(link => {
             link.addEventListener("click", () => toggleMenu(false));
         });
 
-        // Keyboard accessibility
+        // Keyboard accessibility for hamburger button
         mobileMenuBtn.addEventListener("keydown", (e) => {
             if (e.key === "Enter" || e.key === " ") {
                 e.preventDefault();
-                toggleMenu(true);
+                toggleMenu(!isMenuOpen);
             }
         });
     }
@@ -128,7 +139,7 @@ document.addEventListener("DOMContentLoaded", () => {
             trigger: ".stats",
             start: "top 80%",
             onEnter: animateCounters,
-            once: true // Run only once
+            once: true
         });
     }
 
@@ -167,7 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!isActive) {
                 answer.style.maxHeight = `${answer.scrollHeight}px`;
             } else {
-                answer.style.maxHeight = 0;
+                answer.style.maxHeight = "";
             }
         });
 
@@ -183,7 +194,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Particle Animation (Optimized)
     const particlesContainer = $("#particles");
     if (particlesContainer) {
-        const maxParticles = 20; // Limit particle count
+        const maxParticles = 20;
         let particleCount = 0;
 
         const createParticle = () => {
@@ -206,7 +217,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }, 8000);
         };
 
-        // Create particles sparingly on mobile
         const interval = window.innerWidth < 768 ? 500 : 300;
         setInterval(createParticle, interval);
     }
