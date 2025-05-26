@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlowBotic - Grow Your Twitter Audience Automatically</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a0ca3;
+            --primary-light: #4895ef;
+            --secondary: #4cc9f0;
+            --accent: #7209b7;
+            --danger: #f72585;
+            --warning: #f8961e;
+            --success: #4ade80;
+            --dark: #1a1a2e;
+            --darker: #16213e;
+            --light: #f8f9fa;
+            --lighter: #e2e8f0;
+            --border: rgba(255, 255, 255, 0.1);
+            --text-primary: white;
+            --text-secondary: #a1a1aa;
+            --text-tertiary: #71717a;
+            --glass: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-highlight: rgba(255, 255, 255, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            position: relative;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        h1 {
+            font-size: 1.7rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            min-height: 4.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .headline {
+            background: linear-gradient(70deg, var(--light), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+            display: inline-block;
+        }
+
+        .headline::after {
+            content: '|';
+            position: absolute;
+            right: -8px;
+            opacity: 1;
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .waitlist-form {
+            position: relative;
+            background: rgba(30, 41, 59, 0.8);
+            max-width: 500px;
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 0 auto 2rem;
+            border: 1px solid var(--border);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+            position: relative;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(67, 97, 238, 0.6);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .feature {
+            background: rgba(30, 41, 59, 0.5);
+            border-radius: 15px;
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: rgba(67, 97, 238, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .feature-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .confirmation-message {
+            display: none;
+            background: rgba(74, 222, 128, 0.1);
+            border: 1px solid rgba(74, 222, 128, 0.2);
+            color: #4ade80;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            align-items: center;
+            gap: 0.75rem;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(74, 222, 128, 0.9);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            z-index: 1000;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            max-width: 350px;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast.error {
+            background: rgba(247, 37, 133, 0.9);
+        }
+
+        .toast i {
+            font-size: 1.2rem;
+        }
+
+        .footer {
+            margin-top: 3rem;
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Background blobs */
+        .background-blobs {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.2;
+        }
+
+        .blob:nth-child(1) {
+            background: var(--primary);
+            width: 500px;
+            height: 500px;
+            top: -100px;
+            left: -100px;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        .blob:nth-child(2) {
+            background: var(--accent);
+            width: 600px;
+            height: 600px;
+            bottom: -150px;
+            right: -100px;
+            animation: float 18s infinite ease-in-out reverse;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0);
+            }
+            50% {
+                transform: translate(50px, 50px);
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (min-width: 400px) {
+            h1 {
+                font-size: 1.7rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                padding: 2rem;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+                min-height: 6rem;
+            }
+            
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .waitlist-form {
+                padding: 2.5rem;
+            }
+        }
+
+        @media (min-width: 992px) {
+            h1 {
+                font-size: 3rem;
+            }
+            
+            .features {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-blobs">
+        <div class="blob"></div>
+        <div class="blob"></div>
+    </div>
+
+    <div class="container">
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fas fa-robot"></i>
+            </div>
+            <span>FlowBotic</span>
+        </div>
+
+        <h1>
+            <span class="headline" id="typewriter"></span>
+        </h1>
+        <p class="subtitle">Join our waitlist to get early access and exclusive benefits when we launch</p>
+
+        <div class="confirmation-message" id="confirmationMessage">
+            <i class="fas fa-check-circle"></i>
+            <span>Thank you for joining! We've sent a confirmation email to <span id="userEmail"></span></span>
+        </div>
+
+        <form class="waitlist-form" id="waitlistForm">
+            <div class="form-group">
+                <label for="name" class="form-label">Your Name</label>
+                <input type="text" id="name" class="form-control" placeholder="John Doe" required>
+            </div>
+            <div class="form-group">
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" id="email" class="form-control" placeholder="your@email.com" required>
+            </div>
+            <div class="form-group">
+                <label for="twitter" class="form-label">Twitter Handle (optional)</label>
+                <input type="text" id="twitter" class="form-control" placeholder="@yourhandle">
+            </div>
+            <button type="submit" class="btn btn-primary" id="joinWaitlistBtn">
+                Join Waitlist
+            </button>
+        </form>
+        
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h3 class="feature-title">AI Content Generation</h3>
+                <p class="feature-description">Automatically create engaging tweets in your unique voice with our advanced AI technology.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3 class="feature-title">Smart Analytics</h3>
+                <p class="feature-description">Get detailed insights into what content performs best with your audience.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3 class="feature-title">Audience Growth</h3>
+                <p class="feature-description">Grow your following with targeted engagement strategies.</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2025 FlowBotic. All rights reserved. <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            <p>Contact us at <a href="mailto:hello@flowbotic.com">hello@flowbotic.com</a></p>
+        </div>
+    </div>
+
+    <!-- Toast Notification Element -->
+    <div class="toast" id="toastNotification">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">Success! You've been added to our waitlist.</span>
+    </div>
+
+    <script>
+        // Typewriter Effect
+        const messages = [
+            "Grow Your Twitter Audience 3X Faster",
+            "AI-Powered Twitter Growth Automation",
+            "Get More Followers While You Sleep",
+            "Smart Twitter Growth on Autopilot"
+        ];
+        
+        let messageIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let isEnd = false;
+        
+        function typeWriter() {
+            const currentMessage = messages[messageIndex];
+            const typewriterElement = document.getElementById('typewriter');
+            
+            if (isDeleting) {
+                typewriterElement.textContent = currentMessage.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typewriterElement.textContent = currentMessage.substring(0, charIndex + 1);
+                charIndex++;
+            }
+            
+            if (!isDeleting && charIndex === currentMessage.length) {
+                isEnd = true;
+                setTimeout(() => {
+                    isDeleting = true;
+                }, 2000); // Pause at end of message
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                messageIndex = (messageIndex + 1) % messages.length;
+                isEnd = false;
+            }
+            
+            const speed = isDeleting ? 50 : isEnd ? 2000 : 100;
+            setTimeout(typeWriter, speed);
+        }
+        
+        // Start the typewriter effect
+        setTimeout(typeWriter, 1000);
+
+        // Toast Notification Function
+        function showToast(message, isError = false) {
+            const toast = document.getElementById('toastNotification');
+            const toastMessage = document.getElementById('toastMessage');
+            
+            toastMessage.textContent = message;
+            toast.className = isError ? 'toast error show' : 'toast show';
+            
+            setTimeout(() => {
+                toast.className = 'toast';
+            }, 5000);
+        }
+
+        // Form submission with Google Sheets integration
+        document.getElementById('waitlistForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const twitter = document.getElementById('twitter').value;
+            const btn = document.getElementById('joinWaitlistBtn');
+            
+            // Show loading state
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+            btn.disabled = true;
+            
+            // Google Sheets Script URL (replace with your own)
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbzEpz0CmJXj7Sqyskuv-HNJ1qm-Xypoe9HjqdijKepNsWFr0jbj4vmUktpNXwQxbmNR/exec';
+            
+            // Prepare form data
+            const formData = new FormData();
+            formData.append('name', name);
+            formData.append('email', email);
+            formData.append('twitter', twitter);
+            formData.append('timestamp', new Date().toISOString()); 
+            
+            // Send data to Google Sheets
+            fetch(scriptURL, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Show success message
+                document.getElementById('userEmail').textContent = email;
+                document.getElementById('confirmationMessage').style.display = 'flex';
+                document.getElementById('waitlistForm').style.display = 'none';
+                
+                // Show toast notification
+                showToast('Success! You\'ve been added to our waitlist.');
+                
+                // Reset form (hidden in this case)
+                btn.innerHTML = 'Join Waitlist';
+                btn.disabled = false;
+                
+                console.log('Added to waitlist:', { name, email, twitter });
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showToast('Oops! Something went wrong. Please try again.', true);
+                
+                // Reset button state
+                btn.innerHTML = 'Join Waitlist';
+                btn.disabled = false;
+
+  
+            });
+                
+            
+        });
+        
+        // Add touch effects for mobile
+        const btn = document.getElementById('joinWaitlistBtn');
+        btn.addEventListener('touchstart', () => {
+            btn.style.transform = 'scale(0.98)';
+        });
+        btn.addEventListener('touchend', () => {
+            btn.style.transform = 'scale(1)';
+        });
+    </script>
+</body>
+</html>

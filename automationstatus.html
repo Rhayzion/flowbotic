@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Page title</title>
+</head>
+
+<style>
+/* Automation Status Page Styles */
+.automation-header {
+  margin-bottom: 2rem;
+}
+
+.automation-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.summary-card {
+  background: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.dark-mode .summary-card {
+  background: var(--dark);
+  border-color: var(--border);
+}
+
+.summary-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.summary-icon.bg-primary {
+  background: var(--primary);
+}
+
+.summary-icon.bg-secondary {
+  background: var(--secondary);
+}
+
+.summary-icon.bg-warning {
+  background: var(--warning);
+}
+
+.summary-content {
+  flex: 1;
+}
+
+.summary-content h3 {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.status-toggle-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.toggle-switch.large {
+  width: 60px;
+  height: 32px;
+}
+
+.toggle-switch.large .slider:before {
+  width: 26px;
+  height: 26px;
+}
+
+.toggle-label {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.activity-stats {
+  display: flex;
+  gap: 1rem;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+/* Modules Grid */
+.automation-modules {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.module-card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.dark-mode .module-card {
+  background: var(--dark);
+  border-color: var(--border);
+}
+
+.module-header {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.module-header h3 {
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.module-body {
+  padding: 1.5rem;
+}
+
+.module-stats {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.module-stats .stat-value {
+  font-size: 1.5rem;
+}
+
+.module-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.progress-container {
+  margin-top: 1.5rem;
+}
+
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.progress-bar {
+  height: 8px;
+  background: var(--lighter);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.dark-mode .progress-bar {
+  background: var(--darker);
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+.strategy-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.tag {
+  background: var(--lighter);
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+}
+
+.dark-mode .tag {
+  background: var(--darker);
+}
+
+.analytics-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.metric-value {
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.metric-value.positive {
+  color: var(--secondary);
+}
+
+.metric-value.negative {
+  color: var(--danger);
+}
+
+.metric-value.neutral {
+  color: var(--warning);
+}
+
+.metric-label {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.module-note {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background: var(--lighter);
+  border-radius: 6px;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dark-mode .module-note {
+  background: var(--darker);
+}
+
+.recent-reply {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: var(--lighter);
+  border-radius: 6px;
+}
+
+.dark-mode .recent-reply {
+  background: var(--darker);
+}
+
+.reply-text {
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+}
+
+.reply-time {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.safety-features {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.safety-alert {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background: rgba(239, 68, 68, 0.1);
+  border-radius: 6px;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--danger);
+}
+
+.module-footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.text-link {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--primary);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* Schedule Section */
+.schedule-section {
+  margin-bottom: 2rem;
+}
+
+.time-slots {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.time-slot {
+  background: white;
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.dark-mode .time-slot {
+  background: var(--dark);
+  border-color: var(--border);
+}
+
+.time-slot.active {
+  border-left: 4px solid var(--primary);
+}
+
+.time-slot.inactive {
+  opacity: 0.7;
+}
+
+.slot-time {
+  font-weight: 600;
+  min-width: 120px;
+}
+
+.slot-days {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  min-width: 100px;
+}
+
+.slot-modules {
+  flex: 1;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.badge {
+  background: var(--lighter);
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+}
+
+.dark-mode .badge {
+  background: var(--darker);
+}
+
+.btn-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+/* Emergency Section */
+.emergency-section {
+  background: rgba(239, 68, 68, 0.05);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.dark-mode .emergency-section {
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.section-description {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.emergency-buttons {
+  display: flex;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.btn-emergency {
+  background: var(--danger);
+  color: white;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+.btn-emergency:hover {
+  background: #DC2626;
+}
+
+.safety-note {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Activity Log */
+.log-entries {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.log-entry {
+  background: white;
+  border-radius: 8px;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  display: flex;
+  gap: 1rem;
+}
+
+.dark-mode .log-entry {
+  background: var(--dark);
+  border-color: var(--border);
+}
+
+.log-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.log-icon.success {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--secondary);
+}
+
+.log-icon.warning {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--warning);
+}
+
+.log-content {
+  flex: 1;
+}
+
+.log-message {
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+}
+
+.log-time {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .automation-summary {
+    grid-template-columns: 1fr;
+  }
+  
+  .emergency-buttons {
+    flex-direction: column;
+  }
+  
+  .time-slot {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  
+  .slot-modules {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+</style>
+<body>
+    <div class="tab-content active" id="automation-status">
+  <!-- Automation Status Header -->
+  <div class="automation-header">
+    <h2 class="section-title">Automation Control Center</h2>
+    <div class="automation-summary">
+      <div class="summary-card">
+        <div class="summary-icon bg-primary">
+          <i class="fas fa-robot"></i>
+        </div>
+        <div class="summary-content">
+          <h3>Automation Status</h3>
+          <div class="status-toggle-container">
+            <label class="toggle-switch large">
+              <input type="checkbox" id="globalAutomationToggle" checked>
+              <span class="slider"></span>
+              <span class="toggle-label" id="globalStatusLabel">Active</span>
+            </label>
+          </div>
+        </div>
+      </div>
+      
+      <div class="summary-card">
+        <div class="summary-icon bg-secondary">
+          <i class="fas fa-calendar-check"></i>
+        </div>
+        <div class="summary-content">
+          <h3>Next Scheduled Action</h3>
+          <p id="nextScheduledAction">Posting at 3:00 PM (in 2h 15m)</p>
+          <button class="btn btn-sm btn-outline">View Schedule</button>
+        </div>
+      </div>
+      
+      <div class="summary-card">
+        <div class="summary-icon bg-warning">
+          <i class="fas fa-chart-line"></i>
+        </div>
+        <div class="summary-content">
+          <h3>Today's Activity</h3>
+          <div class="activity-stats">
+            <div class="stat">
+              <span class="stat-value">8</span>
+              <span class="stat-label">Posts</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">127</span>
+              <span class="stat-label">Likes</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">23</span>
+              <span class="stat-label">Replies</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Automation Modules Grid -->
+  <div class="automation-modules">
+    <!-- Posting Module -->
+    <div class="module-card">
+      <div class="module-header">
+        <h3><i class="fas fa-paper-plane"></i> Scheduled Posting</h3>
+        <label class="toggle-switch">
+          <input type="checkbox" class="module-toggle" data-module="posting" checked>
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="module-body">
+        <div class="module-stats">
+          <div class="stat">
+            <span class="stat-value">5</span>
+            <span class="stat-label">Queued</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">3</span>
+            <span class="stat-label">Today</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">12h</span>
+            <span class="stat-label">Interval</span>
+          </div>
+        </div>
+        <div class="module-actions">
+          <button class="btn btn-sm btn-primary">
+            <i class="fas fa-plus"></i> Add Post
+          </button>
+          <button class="btn btn-sm btn-secondary">
+            <i class="fas fa-calendar"></i> Schedule
+          </button>
+        </div>
+      </div>
+      <div class="module-footer">
+        <a href="#" class="text-link">Advanced Settings <i class="fas fa-chevron-right"></i></a>
+      </div>
+    </div>
+
+    <!-- Engagement Module -->
+    <div class="module-card">
+      <div class="module-header">
+        <h3><i class="fas fa-heart"></i> Smart Engagement</h3>
+        <label class="toggle-switch">
+          <input type="checkbox" class="module-toggle" data-module="engagement" checked>
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="module-body">
+        <div class="module-stats">
+          <div class="stat">
+            <span class="stat-value">87</span>
+            <span class="stat-label">Likes</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">23</span>
+            <span class="stat-label">Replies</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">15</span>
+            <span class="stat-label">RTs</span>
+          </div>
+        </div>
+        <div class="progress-container">
+          <div class="progress-label">
+            <span>Daily Limit</span>
+            <span>87/150</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 58%"></div>
+          </div>
+        </div>
+      </div>
+      <div class="module-footer">
+        <a href="#" class="text-link">Adjust Limits <i class="fas fa-chevron-right"></i></a>
+      </div>
+    </div>
+
+    <!-- Following Module -->
+    <div class="module-card">
+      <div class="module-header">
+        <h3><i class="fas fa-user-plus"></i> Strategic Following</h3>
+        <label class="toggle-switch">
+          <input type="checkbox" class="module-toggle" data-module="following" checked>
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="module-body">
+        <div class="module-stats">
+          <div class="stat">
+            <span class="stat-value">12</span>
+            <span class="stat-label">Today</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">5</span>
+            <span class="stat-label">New Followers</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">87%</span>
+            <span class="stat-label">Match Rate</span>
+          </div>
+        </div>
+        <div class="strategy-tags">
+          <span class="tag">#Tech</span>
+          <span class="tag">#Marketing</span>
+          <span class="tag">#AI</span>
+        </div>
+      </div>
+      <div class="module-footer">
+        <a href="#" class="text-link">Edit Strategy <i class="fas fa-chevron-right"></i></a>
+      </div>
+    </div>
+
+    <!-- Analytics Module -->
+    <div class="module-card">
+      <div class="module-header">
+        <h3><i class="fas fa-chart-bar"></i> Performance Analytics</h3>
+        <label class="toggle-switch">
+          <input type="checkbox" class="module-toggle" data-module="analytics" checked>
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="module-body">
+        <div class="analytics-metrics">
+          <div class="metric">
+            <div class="metric-value positive">
+              <i class="fas fa-arrow-up"></i> 14%
+            </div>
+            <div class="metric-label">Engagement</div>
+          </div>
+          <div class="metric">
+            <div class="metric-value positive">
+              <i class="fas fa-arrow-up"></i> 8%
+            </div>
+            <div class="metric-label">Followers</div>
+          </div>
+          <div class="metric">
+            <div class="metric-value neutral">
+              <i class="fas fa-minus"></i> 0%
+            </div>
+            <div class="metric-label">Impressions</div>
+          </div>
+        </div>
+        <div class="module-note">
+          <i class="fas fa-info-circle"></i> Next report at 12:00 AM
+        </div>
+      </div>
+      <div class="module-footer">
+        <a href="#" class="text-link">View Detailed Reports <i class="fas fa-chevron-right"></i></a>
+      </div>
+    </div>
+
+    <!-- Reply Module -->
+    <div class="module-card">
+      <div class="module-header">
+        <h3><i class="fas fa-reply"></i> Smart Replies</h3>
+        <label class="toggle-switch">
+          <input type="checkbox" class="module-toggle" data-module="replies" checked>
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="module-body">
+        <div class="reply-stats">
+          <div class="stat">
+            <span class="stat-value">23</span>
+            <span class="stat-label">Today</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">12</span>
+            <span class="stat-label">Keywords</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">87%</span>
+            <span class="stat-label">Accuracy</span>
+          </div>
+        </div>
+        <div class="recent-reply">
+          <div class="reply-text">"Thanks for sharing! We appreciate your support."</div>
+          <div class="reply-time">2 hours ago</div>
+        </div>
+      </div>
+      <div class="module-footer">
+        <a href="#" class="text-link">Manage Replies <i class="fas fa-chevron-right"></i></a>
+      </div>
+    </div>
+
+    <!-- Safety Module -->
+    <div class="module-card">
+      <div class="module-header">
+        <h3><i class="fas fa-shield-alt"></i> Safety Controls</h3>
+        <label class="toggle-switch">
+          <input type="checkbox" class="module-toggle" data-module="safety" checked>
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="module-body">
+        <div class="safety-features">
+          <div class="feature">
+            <i class="fas fa-check-circle text-success"></i>
+            <span>Spam Protection</span>
+          </div>
+          <div class="feature">
+            <i class="fas fa-check-circle text-success"></i>
+            <span>Rate Limiting</span>
+          </div>
+          <div class="feature">
+            <i class="fas fa-exclamation-triangle text-warning"></i>
+            <span>2 Potential Risks</span>
+          </div>
+        </div>
+        <div class="safety-alert">
+          <i class="fas fa-exclamation-circle"></i>
+          <span>3 accounts blocked this week</span>
+        </div>
+      </div>
+      <div class="module-footer">
+        <a href="#" class="text-link">Review Settings <i class="fas fa-chevron-right"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Automation Schedule -->
+  <div class="schedule-section">
+    <div class="section-header">
+      <h3>Automation Schedule</h3>
+      <button class="btn btn-primary">
+        <i class="fas fa-plus"></i> Add Time Slot
+      </button>
+    </div>
+    
+    <div class="time-slots">
+      <div class="time-slot active">
+        <div class="slot-time">9:00 AM - 11:00 AM</div>
+        <div class="slot-days">Mon, Wed, Fri</div>
+        <div class="slot-modules">
+          <span class="badge">Posting</span>
+          <span class="badge">Engagement</span>
+        </div>
+        <button class="btn btn-sm btn-icon">
+          <i class="fas fa-ellipsis-v"></i>
+        </button>
+      </div>
+      
+      <div class="time-slot">
+        <div class="slot-time">3:00 PM - 5:00 PM</div>
+        <div class="slot-days">Daily</div>
+        <div class="slot-modules">
+          <span class="badge">Engagement</span>
+          <span class="badge">Following</span>
+        </div>
+        <button class="btn btn-sm btn-icon">
+          <i class="fas fa-ellipsis-v"></i>
+        </button>
+      </div>
+      
+      <div class="time-slot inactive">
+        <div class="slot-time">8:00 PM - 10:00 PM</div>
+        <div class="slot-days">Tue, Thu</div>
+        <div class="slot-modules">
+          <span class="badge">Analytics</span>
+        </div>
+        <button class="btn btn-sm btn-icon">
+          <i class="fas fa-ellipsis-v"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Emergency Controls -->
+  <div class="emergency-section">
+    <div class="section-header">
+      <h3>Emergency Controls</h3>
+      <div class="section-description">
+        Use these controls to immediately stop all automation activities
+      </div>
+    </div>
+    
+    <div class="emergency-buttons">
+      <button class="btn btn-emergency" id="pauseAllBtn">
+        <i class="fas fa-pause"></i> Pause All Automation
+      </button>
+      <button class="btn btn-emergency" id="disableAllBtn">
+        <i class="fas fa-power-off"></i> Disable Completely
+      </button>
+    </div>
+    
+    <div class="safety-note">
+      <i class="fas fa-info-circle"></i> Disabling will stop all activities immediately and require manual restart
+    </div>
+  </div>
+
+  <!-- Activity Log -->
+  <div class="activity-log">
+    <div class="section-header">
+      <h3>Recent Automation Activity</h3>
+      <button class="btn btn-secondary">
+        <i class="fas fa-history"></i> View Full Log
+      </button>
+    </div>
+    
+    <div class="log-entries">
+      <div class="log-entry">
+        <div class="log-icon success">
+          <i class="fas fa-check"></i>
+        </div>
+        <div class="log-content">
+          <div class="log-message">Posted scheduled tweet: "New features coming soon!"</div>
+          <div class="log-time">15 minutes ago</div>
+        </div>
+      </div>
+      
+      <div class="log-entry">
+        <div class="log-icon success">
+          <i class="fas fa-check"></i>
+        </div>
+        <div class="log-content">
+          <div class="log-message">Liked tweet from @technews about AI developments</div>
+          <div class="log-time">32 minutes ago</div>
+        </div>
+      </div>
+      
+      <div class="log-entry">
+        <div class="log-icon warning">
+          <i class="fas fa-exclamation"></i>
+        </div>
+        <div class="log-content">
+          <div class="log-message">Rate limit approached - pausing engagement for 15 minutes</div>
+          <div class="log-time">1 hour ago</div>
+        </div>
+      </div>
+      
+      <div class="log-entry">
+        <div class="log-icon success">
+          <i class="fas fa-check"></i>
+        </div>
+        <div class="log-content">
+          <div class="log-message">Followed 3 accounts matching target criteria</div>
+          <div class="log-time">2 hours ago</div>
+        </div>
+      </div>
+      
+      <div class="log-entry">
+        <div class="log-icon success">
+          <i class="fas fa-check"></i>
+        </div>
+        <div class="log-content">
+          <div class="log-message">Replied to customer inquiry with pre-approved response</div>
+          <div class="log-time">3 hours ago</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+// Automation Status Page JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+  // Global automation toggle
+  const globalToggle = document.getElementById('globalAutomationToggle');
+  const globalStatusLabel = document.getElementById('globalStatusLabel');
+  
+  globalToggle.addEventListener('change', function() {
+    if (this.checked) {
+      globalStatusLabel.textContent = 'Active';
+      showToast('All automation activated', 'success');
+      
+      // Enable all module toggles
+      document.querySelectorAll('.module-toggle').forEach(toggle => {
+        toggle.checked = true;
+      });
+    } else {
+      globalStatusLabel.textContent = 'Inactive';
+      showToast('All automation paused', 'warning');
+      
+      // Disable all module toggles
+      document.querySelectorAll('.module-toggle').forEach(toggle => {
+        toggle.checked = false;
+      });
+    }
+  });
+  
+  // Module toggles
+  document.querySelectorAll('.module-toggle').forEach(toggle => {
+    toggle.addEventListener('change', function() {
+      const module = this.getAttribute('data-module');
+      const status = this.checked ? 'activated' : 'paused';
+      showToast(`${moduleName(module)} module ${status}`, 'info');
+      
+      // If any module is turned off, update global toggle to "mixed" state
+      updateGlobalToggleState();
+    });
+  });
+  
+  // Emergency buttons
+  document.getElementById('pauseAllBtn').addEventListener('click', function() {
+    if (confirm('Pause all automation activities?')) {
+      globalToggle.checked = false;
+      globalToggle.dispatchEvent(new Event('change'));
+      showToast('All automation paused', 'warning');
+    }
+  });
+  
+  document.getElementById('disableAllBtn').addEventListener('click', function() {
+    if (confirm('Completely disable all automation? This will require manual restart.')) {
+      globalToggle.checked = false;
+      globalToggle.dispatchEvent(new Event('change'));
+      
+      // Add additional disable logic here
+      showToast('All automation completely disabled', 'error');
+    }
+  });
+  
+  // Helper functions
+  function moduleName(key) {
+    const names = {
+      'posting': 'Scheduled Posting',
+      'engagement': 'Smart Engagement',
+      'following': 'Strategic Following',
+      'analytics': 'Performance Analytics',
+      'replies': 'Smart Replies',
+      'safety': 'Safety Controls'
+    };
+    return names[key] || key;
+  }
+  
+  function updateGlobalToggleState() {
+    const toggles = document.querySelectorAll('.module-toggle');
+    const checkedCount = Array.from(toggles).filter(t => t.checked).length;
+    
+    if (checkedCount === 0) {
+      globalToggle.checked = false;
+      globalStatusLabel.textContent = 'Inactive';
+    } else if (checkedCount === toggles.length) {
+      globalToggle.checked = true;
+      globalStatusLabel.textContent = 'Active';
+    } else {
+      globalToggle.checked = false;
+      globalStatusLabel.textContent = 'Partial';
+    }
+  }
+  
+  function showToast(message, type) {
+    const toast = document.createElement('div');
+    toast.className = `toast toast-${type}`;
+    toast.innerHTML = `
+      <div class="toast-message">${message}</div>
+      <button class="toast-close" onclick="this.parentElement.remove()">
+        <i class="fas fa-times"></i>
+      </button>
+    `;
+    document.body.appendChild(toast);
+    
+    setTimeout(() => toast.classList.add('show'), 10);
+    setTimeout(() => {
+      toast.classList.remove('show');
+      setTimeout(() => toast.remove(), 300);
+    }, 3000);
+  }
+  
+  // Simulate next scheduled action countdown
+  function updateNextActionTime() {
+    const now = new Date();
+    const nextHour = new Date(now);
+    nextHour.setHours(15, 0, 0, 0); // 3:00 PM
+    
+    if (now > nextHour) {
+      nextHour.setDate(nextHour.getDate() + 1);
+    }
+    
+    const diff = nextHour - now;
+    const hours = Math.floor(diff / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    
+    document.getElementById('nextScheduledAction').textContent = 
+      `Posting at 3:00 PM (in ${hours}h ${minutes}m)`;
+  }
+  
+  updateNextActionTime();
+  setInterval(updateNextActionTime, 60000); // Update every minute
+});
+</script>
+</body>
+</html>

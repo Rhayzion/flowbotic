@@ -1,0 +1,1370 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlowBotic - Sign Up</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a0ca3;
+            --primary-light: #4895ef;
+            --secondary: #4cc9f0;
+            --accent: #7209b7;
+            --danger: #f72585;
+            --warning: #f8961e;
+            --success: #4ade80;
+            --dark: #1a1a2e;
+            --darker: #16213e;
+            --light: #f8f9fa;
+            --lighter: #e2e8f0;
+            --border: rgba(255, 255, 255, 0.1);
+            --text-primary: white;
+            --text-secondary: #a1a1aa;
+            --text-tertiary: #71717a;
+            --glass: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-highlight: rgba(255, 255, 255, 0.15);
+            --twitter-blue: #1DA1F2;
+            --apple-black: #000000;
+            --google-blue: #4285F4;
+            --google-red: #EA4335;
+            --google-yellow: #FBBC05;
+            --google-green: #34A853;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .background-blobs {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.7;
+            animation: floatBlob 15s infinite alternate ease-in-out;
+        }
+
+        .blob:nth-child(1) {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--primary), transparent 70%);
+            top: -10%;
+            left: -10%;
+        }
+
+        .blob:nth-child(2) {
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, var(--accent), transparent 70%);
+            bottom: -20%;
+            right: -10%;
+            animation-delay: 3s;
+            animation-duration: 18s;
+        }
+
+        @keyframes floatBlob {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(100px, -100px) scale(1.1); }
+            100% { transform: translate(-100px, 100px) scale(0.9); }
+        }
+
+        .auth-container {
+            width: 100%;
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: rgba(30, 41, 59, 0.8);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border: 1px solid var(--border);
+            min-height: 700px;
+        }
+
+        .auth-hero {
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.2), rgba(114, 9, 183, 0.2));
+            padding: 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .auth-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234361ee' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .auth-hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .auth-hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, white, var(--primary-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .auth-hero p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+
+        .auth-features {
+            margin-top: 3rem;
+        }
+
+        .auth-feature {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .auth-feature-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: rgba(67, 97, 238, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .auth-feature-text h3 {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .auth-feature-text p {
+            color: var(--text-tertiary);
+            margin-bottom: 0;
+            font-size: 0.95rem;
+        }
+
+        .auth-forms {
+            padding: 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: var(--darker);
+        }
+
+        .auth-form-container {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .auth-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .auth-logo-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .auth-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1rem;
+        }
+
+        .auth-tab {
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .auth-tab.active {
+            background: rgba(67, 97, 238, 0.2);
+            color: var(--primary);
+        }
+
+        .auth-form {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .auth-form.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+        }
+
+        .password-input {
+            position: relative;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-tertiary);
+            cursor: pointer;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(67, 97, 238, 0.6);
+        }
+
+        /* Google Button with custom logo */
+        .btn-google {
+            background: white;
+            color: rgba(0, 0, 0, 0.75);
+            margin-bottom: 0.75rem;
+            position: relative;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-google:hover {
+            background: #f8f8f8;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-google::before {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23EA4335' d='M5.266 9.765A7.077 7.077 0 0 1 12 4.909c1.69 0 3.218.6 4.418 1.582L19.91 3C17.782 1.145 15.055 0 12 0 7.27 0 3.198 2.698 1.24 6.65l4.026 3.115z'/%3E%3Cpath fill='%2334A853' d='M16.04 18.013c-1.09.703-2.474 1.078-4.04 1.078a7.077 7.077 0 0 1-6.723-4.823l-4.04 3.067A11.965 11.965 0 0 0 12 24c2.933 0 5.735-1.043 7.834-3l-3.793-2.987z'/%3E%3Cpath fill='%234285F4' d='M19.834 21c2.195-2.048 3.62-5.096 3.62-9 0-.71-.109-1.473-.272-2.182H12v4.637h6.436c-.317 1.559-1.17 2.766-2.395 3.558L19.834 21z'/%3E%3Cpath fill='%23FBBC05' d='M5.277 14.268A7.12 7.12 0 0 1 4.909 12c0-.782.125-1.533.357-2.235L1.24 6.65A11.934 11.934 0 0 0 0 12c0 1.92.445 3.73 1.237 5.335l4.04-3.067z'/%3E%3C/svg%3E") no-repeat center center;
+            background-size: contain;
+        }
+
+        /* Apple Button */
+        .btn-apple {
+            background: var(--apple-black);
+            color: white;
+            margin-bottom: 0.75rem;
+        }
+
+        .btn-apple:hover {
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        /* Email Button */
+        .btn-email {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            margin-bottom: 0.75rem;
+        }
+
+        .btn-email:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Twitter Button */
+        .btn-twitter {
+            background: var(--twitter-blue);
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-twitter:hover {
+            background: #1a8cd8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(29, 161, 242, 0.4);
+        }
+
+        .btn-skip {
+            background: transparent;
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-skip:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 1.5rem 0;
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+        }
+
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+            margin: 0 1rem;
+        }
+
+        .form-footer {
+            margin-top: 1.5rem;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .form-footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .form-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .alert {
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .alert-success {
+            background: rgba(74, 222, 128, 0.1);
+            border: 1px solid rgba(74, 222, 128, 0.2);
+            color: #4ade80;
+        }
+
+        .alert-danger {
+            background: rgba(247, 37, 133, 0.1);
+            border: 1px solid rgba(247, 37, 133, 0.2);
+            color: #f72585;
+        }
+
+        .verification-code {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .verification-code input {
+            text-align: center;
+            font-size: 1.5rem;
+            padding: 0.5rem;
+            height: 60px;
+        }
+
+        .resend-code {
+            text-align: center;
+            margin-top: 1rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .resend-code a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .resend-code a:hover {
+            text-decoration: underline;
+        }
+
+        .welcome-container {
+            text-align: center;
+        }
+
+        .welcome-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .welcome-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, white, var(--primary-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .welcome-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+
+        .twitter-connect-card {
+            background: rgba(30, 41, 59, 0.6);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        .twitter-connect-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(29, 161, 242, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--twitter-blue);
+            font-size: 1.5rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .twitter-connect-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .twitter-connect-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .feature-limitations {
+            margin-top: 2rem;
+            text-align: left;
+        }
+
+        .feature-limitation {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            color: var(--text-tertiary);
+        }
+
+        .feature-limitation i {
+            color: var(--danger);
+            margin-top: 3px;
+        }
+
+        /* Loading spinner */
+        .spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .btn-loading .spinner {
+            display: block;
+        }
+
+        .btn-loading .btn-text {
+            display: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .auth-container {
+                grid-template-columns: 1fr;
+            }
+
+            .auth-hero {
+                display: none;
+            }
+        }
+
+        @media (max-width: 576px) {
+            body {
+                padding: 1rem;
+            }
+
+            .auth-forms {
+                padding: 2rem;
+            }
+
+            .verification-code {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-blobs">
+        <div class="blob"></div>
+        <div class="blob"></div>
+    </div>
+
+    <div class="auth-container">
+        <!-- Left Side - Hero Section -->
+        <div class="auth-hero">
+            <div class="auth-hero-content">
+                <h1>Grow Your Twitter Audience Automatically</h1>
+                <p>Join thousands of creators and businesses using FlowBotic to save time and grow their Twitter presence with AI-powered automation.</p>
+                
+                <div class="auth-features">
+                    <div class="auth-feature">
+                        <div class="auth-feature-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="auth-feature-text">
+                            <h3>AI Content Generation</h3>
+                            <p>Automatically create engaging tweets in your unique voice</p>
+                        </div>
+                    </div>
+                    <div class="auth-feature">
+                        <div class="auth-feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="auth-feature-text">
+                            <h3>Smart Analytics</h3>
+                            <p>Track performance and optimize your strategy</p>
+                        </div>
+                    </div>
+                    <div class="auth-feature">
+                        <div class="auth-feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="auth-feature-text">
+                            <h3>Safe Automation</h3>
+                            <p>Fully compliant with Twitter's terms of service</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side - Forms Section -->
+        <div class="auth-forms">
+            <div class="auth-form-container">
+                <div class="auth-logo">
+                    <div class="auth-logo-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <span>FlowBotic</span>
+                </div>
+
+                <!-- Registration Form -->
+                <form id="registerForm" class="auth-form active">
+                    <div class="form-group">
+                        <h2 class="form-label">Create Your Account</h2>
+                        <p class="text-secondary">Choose your preferred sign-up method</p>
+                    </div>
+                    
+                    <button type="button" class="btn btn-google" id="googleSignup">
+                        <span class="btn-text">Continue with Google</span>
+                        <div class="spinner"></div>
+                    </button>
+                    
+                    <button type="button" class="btn btn-apple" id="appleSignup">
+                        <i class="fab fa-apple"></i>
+                        <span class="btn-text">Continue with Apple</span>
+                        <div class="spinner"></div>
+                    </button>
+                    
+                    <button type="button" class="btn btn-email" id="showEmailSignup">
+                        <i class="fas fa-envelope"></i>
+                        <span class="btn-text">Continue with Email</span>
+                        <div class="spinner"></div>
+                    </button>
+                    
+                    <div class="divider">or</div>
+                    
+                    <button type="button" class="btn btn-twitter" id="twitterSignup">
+                        <i class="fab fa-x-twitter"></i>
+                        <span class="btn-text">Connect Twitter Account</span>
+                        <div class="spinner"></div>
+                    </button>
+                    
+                    <div class="form-footer">
+                        Already have an account? <a href="#" id="showLogin">Login</a>
+                    </div>
+                </form>
+
+                <!-- Email Registration Form -->
+                <form id="emailRegisterForm" class="auth-form">
+                    <div class="form-group">
+                        <h2 class="form-label">Sign Up with Email</h2>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="registerName" class="form-label">Full Name</label>
+                        <input type="text" id="registerName" class="form-control" placeholder="Ralph Leo" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="registerEmail" class="form-label">Email Address</label>
+                        <input type="email" id="registerEmail" class="form-control" placeholder="your@email.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="registerPassword" class="form-label">Password</label>
+                        <div class="password-input">
+                            <input type="password" id="registerPassword" class="form-control" placeholder="••••••••" required minlength="8">
+                            <i class="fas fa-eye password-toggle" id="toggleRegisterPassword"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="registerConfirmPassword" class="form-label">Confirm Password</label>
+                        <div class="password-input">
+                            <input type="password" id="registerConfirmPassword" class="form-control" placeholder="••••••••" required minlength="8">
+                            <i class="fas fa-eye password-toggle" id="toggleRegisterConfirmPassword"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input type="checkbox" id="registerTerms" class="form-check-input" required>
+                            <label for="registerTerms" class="form-check-label">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" id="emailSignupBtn">
+                        <span class="btn-text">Create Account</span>
+                        <div class="spinner"></div>
+                    </button>
+                    
+                    <div class="form-footer">
+                        Already have an account? <a href="#" id="showLoginFromEmail">Login</a>
+                    </div>
+                </form>
+
+                <!-- Welcome & Twitter Connection Page -->
+                <div id="welcomePage" class="auth-form">
+                    <div class="welcome-container">
+                        <div class="welcome-icon">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <h2 class="welcome-title">Welcome to FlowBotic!</h2>
+                        <p class="welcome-subtitle">Your account has been successfully created. Connect your Twitter account to unlock all features.</p>
+                        
+                        <div class="twitter-connect-card">
+                            <div class="twitter-connect-icon">
+                                <i class="fab fa-x-twitter"></i>
+                            </div>
+                            <h3 class="twitter-connect-title">Connect Your Twitter Account</h3>
+                            <p class="twitter-connect-description">
+                                FlowBotic works by analyzing your Twitter activity to create personalized content and engagement strategies. 
+                                Connecting your account is required to use our core features.
+                            </p>
+                            <button type="button" class="btn btn-twitter" id="connectTwitterBtn">
+                                <i class="fab fa-x-twitter"></i>
+                                <span class="btn-text">Connect Twitter Account</span>
+                                <div class="spinner"></div>
+                            </button>
+                        </div>
+                        
+                        <div class="feature-limitations">
+                            <p>Without connecting Twitter, you'll be limited to:</p>
+                            <div class="feature-limitation">
+                                <i class="fas fa-times-circle"></i>
+                                <span>No AI content generation based on your style</span>
+                            </div>
+                            <div class="feature-limitation">
+                                <i class="fas fa-times-circle"></i>
+                                <span>No automated engagement with your audience</span>
+                            </div>
+                            <div class="feature-limitation">
+                                <i class="fas fa-times-circle"></i>
+                                <span>No performance analytics for your account</span>
+                            </div>
+                        </div>
+                        
+                        <button type="button" class="btn btn-skip" id="skipTwitterBtn">
+                            <span class="btn-text">Skip for Now (Limited Features)</span>
+                            <div class="spinner"></div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Login Form -->
+                <form id="loginForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="loginEmail" class="form-label">Email Address</label>
+                        <input type="email" id="loginEmail" class="form-control" placeholder="your@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword" class="form-label">Password</label>
+                        <div class="password-input">
+                            <input type="password" id="loginPassword" class="form-control" placeholder="••••••••" required>
+                            <i class="fas fa-eye password-toggle" id="toggleLoginPassword"></i>
+                        </div>
+                        <div class="form-footer">
+                            <a href="#" id="showForgotPassword">Forgot password?</a>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="loginBtn">
+                        <span class="btn-text">Login</span>
+                        <div class="spinner"></div>
+                    </button>
+                    <div class="divider">or</div>
+                    <button type="button" class="btn btn-google" id="googleLogin">
+                        <span class="btn-text">Continue with Google</span>
+                        <div class="spinner"></div>
+                    </button>
+                    <button type="button" class="btn btn-apple" id="appleLogin">
+                        <i class="fab fa-apple"></i>
+                        <span class="btn-text">Continue with Apple</span>
+                        <div class="spinner"></div>
+                    </button>
+                    <button type="button" class="btn btn-twitter" id="twitterLogin">
+                        <i class="fab fa-x-twitter"></i>
+                        <span class="btn-text">Continue with Twitter</span>
+                        <div class="spinner"></div>
+                    </button>
+                    <div class="form-footer">
+                        Don't have an account? <a href="#" id="showRegister">Sign up</a>
+                    </div>
+                </form>
+
+                <!-- Forgot Password Form -->
+                <form id="forgotPasswordForm" class="auth-form">
+                    <div class="form-group">
+                        <h2>Reset Password</h2>
+                        <p class="text-muted">Enter your email address and we'll send you a link to reset your password.</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="forgotEmail" class="form-label">Email Address</label>
+                        <input type="email" id="forgotEmail" class="form-control" placeholder="your@email.com" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="forgotPasswordBtn">
+                        <span class="btn-text">Send Reset Link</span>
+                        <div class="spinner"></div>
+                    </button>
+                    <div class="form-footer">
+                        Remember your password? <a href="#" id="showLoginFromForgot">Login</a>
+                    </div>
+                </form>
+
+                <!-- Email Verification Form -->
+                <form id="verifyEmailForm" class="auth-form">
+                    <div class="form-group">
+                        <h2>Verify Your Email</h2>
+                        <p class="text-muted">We've sent a 6-digit verification code to <strong id="verifyEmailAddress">your@email.com</strong></p>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Verification Code</label>
+                        <div class="verification-code">
+                            <input type="text" maxlength="1" class="form-control" required>
+                            <input type="text" maxlength="1" class="form-control" required>
+                            <input type="text" maxlength="1" class="form-control" required>
+                            <input type="text" maxlength="1" class="form-control" required>
+                            <input type="text" maxlength="1" class="form-control" required>
+                            <input type="text" maxlength="1" class="form-control" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="verifyEmailBtn">
+                        <span class="btn-text">Verify Email</span>
+                        <div class="spinner"></div>
+                    </button>
+                    <div class="resend-code">
+                        Didn't receive a code? <a href="#" id="resendCode">Resend code</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // DOM Elements
+        const forms = document.querySelectorAll('.auth-form');
+        const showEmailSignup = document.getElementById('showEmailSignup');
+        const showRegister = document.getElementById('showRegister');
+        const showLogin = document.getElementById('showLogin');
+        const showLoginFromEmail = document.getElementById('showLoginFromEmail');
+        const showForgotPassword = document.getElementById('showForgotPassword');
+        const showLoginFromForgot = document.getElementById('showLoginFromForgot');
+        const connectTwitterBtn = document.getElementById('connectTwitterBtn');
+        const skipTwitterBtn = document.getElementById('skipTwitterBtn');
+        const resendCode = document.getElementById('resendCode');
+
+        // Authentication buttons
+        const googleSignup = document.getElementById('googleSignup');
+        const appleSignup = document.getElementById('appleSignup');
+        const twitterSignup = document.getElementById('twitterSignup');
+        const emailSignupBtn = document.getElementById('emailSignupBtn');
+        const googleLogin = document.getElementById('googleLogin');
+        const appleLogin = document.getElementById('appleLogin');
+        const twitterLogin = document.getElementById('twitterLogin');
+        const loginBtn = document.getElementById('loginBtn');
+        const forgotPasswordBtn = document.getElementById('forgotPasswordBtn');
+        const verifyEmailBtn = document.getElementById('verifyEmailBtn');
+
+        // Password Toggles
+        const toggleLoginPassword = document.getElementById('toggleLoginPassword');
+        const toggleRegisterPassword = document.getElementById('toggleRegisterPassword');
+        const toggleRegisterConfirmPassword = document.getElementById('toggleRegisterConfirmPassword');
+
+        // Form Navigation
+        function showForm(formId) {
+            forms.forEach(form => {
+                form.classList.remove('active');
+                if (form.id === formId) {
+                    form.classList.add('active');
+                }
+            });
+        }
+
+        // Navigation Link Events
+        showEmailSignup.addEventListener('click', (e) => {
+            e.preventDefault();
+            showForm('emailRegisterForm');
+        });
+
+        showRegister.addEventListener('click', (e) => {
+            e.preventDefault();
+            showForm('registerForm');
+        });
+
+        showLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            showForm('loginForm');
+        });
+
+        showLoginFromEmail.addEventListener('click', (e) => {
+            e.preventDefault();
+            showForm('loginForm');
+        });
+
+        showForgotPassword.addEventListener('click', (e) => {
+            e.preventDefault();
+            showForm('forgotPasswordForm');
+        });
+
+        showLoginFromForgot.addEventListener('click', (e) => {
+            e.preventDefault();
+                        showForm('loginForm');
+        });
+
+        // Password Toggle Events
+        function setupPasswordToggle(toggle, inputId) {
+            toggle.addEventListener('click', () => {
+                const input = document.getElementById(inputId);
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    toggle.classList.replace('fa-eye', 'fa-eye-slash');
+                } else {
+                    input.type = 'password';
+                    toggle.classList.replace('fa-eye-slash', 'fa-eye');
+                }
+            });
+        }
+
+        setupPasswordToggle(toggleLoginPassword, 'loginPassword');
+        setupPasswordToggle(toggleRegisterPassword, 'registerPassword');
+        setupPasswordToggle(toggleRegisterConfirmPassword, 'registerConfirmPassword');
+
+        // Verification Code Input Handling
+        const verificationInputs = document.querySelectorAll('.verification-code input');
+        verificationInputs.forEach((input, index) => {
+            // Allow only numbers
+            input.addEventListener('input', () => {
+                input.value = input.value.replace(/[^0-9]/g, '');
+                
+                // Auto focus next input
+                if (input.value.length === 1 && index < verificationInputs.length - 1) {
+                    verificationInputs[index + 1].focus();
+                }
+            });
+            
+            // Handle backspace
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Backspace' && input.value.length === 0 && index > 0) {
+                    verificationInputs[index - 1].focus();
+                }
+            });
+        });
+
+        // =============================================
+        // Backend-Ready Authentication Implementation
+        // =============================================
+
+        // API Configuration
+        const API_BASE_URL = 'https://api.flowbotic.com/v1';
+        const AUTH_ENDPOINTS = {
+            register: '/auth/register',
+            login: '/auth/login',
+            forgotPassword: '/auth/forgot-password',
+            verifyEmail: '/auth/verify-email',
+            googleAuth: '/auth/google',
+            appleAuth: '/auth/apple',
+            twitterAuth: '/auth/twitter',
+            connectTwitter: '/auth/connect-twitter'
+        };
+
+        // Helper function to handle API requests
+        async function makeApiRequest(endpoint, method = 'POST', body = null) {
+            const url = `${API_BASE_URL}${endpoint}`;
+            const headers = {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            };
+
+            const options = {
+                method,
+                headers,
+                credentials: 'include' // For handling cookies
+            };
+
+            if (body) {
+                options.body = JSON.stringify(body);
+            }
+
+            try {
+                const response = await fetch(url, options);
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.message || 'Something went wrong');
+                }
+
+                return data;
+            } catch (error) {
+                console.error('API Error:', error);
+                throw error;
+            }
+        }
+
+        // Show loading state on buttons
+        function setButtonLoading(button, isLoading) {
+            if (isLoading) {
+                button.classList.add('btn-loading');
+                button.disabled = true;
+            } else {
+                button.classList.remove('btn-loading');
+                button.disabled = false;
+            }
+        }
+
+        // Handle form validation
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        function validatePassword(password) {
+            return password.length >= 8;
+        }
+
+        // =============================================
+        // Authentication Handlers
+        // =============================================
+
+        // Email Registration
+        document.getElementById('emailRegisterForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('registerName').value;
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('registerConfirmPassword').value;
+            const termsAccepted = document.getElementById('registerTerms').checked;
+
+            // Basic validation
+            if (!name || !email || !password || !confirmPassword) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            if (!validateEmail(email)) {
+                alert('Please enter a valid email address');
+                return;
+            }
+
+            if (!validatePassword(password)) {
+                alert('Password must be at least 8 characters');
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match');
+                return;
+            }
+
+            if (!termsAccepted) {
+                alert('You must accept the terms and conditions');
+                return;
+            }
+
+            setButtonLoading(emailSignupBtn, true);
+
+            try {
+                const response = await makeApiRequest(AUTH_ENDPOINTS.register, 'POST', {
+                    name,
+                    email,
+                    password
+                });
+
+                // Store the email for verification
+                document.getElementById('verifyEmailAddress').textContent = email;
+                
+                // Show verification form
+                showForm('verifyEmailForm');
+            } catch (error) {
+                alert(error.message || 'Registration failed. Please try again.');
+            } finally {
+                setButtonLoading(emailSignupBtn, false);
+            }
+        });
+
+        // Email Verification
+        document.getElementById('verifyEmailForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const code = Array.from(verificationInputs)
+                .map(input => input.value)
+                .join('');
+
+            if (code.length !== 6) {
+                alert('Please enter the full 6-digit code');
+                return;
+            }
+
+            setButtonLoading(verifyEmailBtn, true);
+
+            try {
+                const response = await makeApiRequest(AUTH_ENDPOINTS.verifyEmail, 'POST', {
+                    code
+                });
+
+                // Show welcome page after successful verification
+                showForm('welcomePage');
+            } catch (error) {
+                alert(error.message || 'Verification failed. Please try again.');
+            } finally {
+                setButtonLoading(verifyEmailBtn, false);
+            }
+        });
+
+        // Resend Verification Code
+        resendCode.addEventListener('click', async (e) => {
+            e.preventDefault();
+            
+            try {
+                const response = await makeApiRequest(AUTH_ENDPOINTS.verifyEmail, 'POST', {
+                    resend: true
+                });
+                
+                alert('Verification code resent successfully!');
+            } catch (error) {
+                alert(error.message || 'Failed to resend code. Please try again.');
+            }
+        });
+
+        // Login with Email
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            if (!email || !password) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            setButtonLoading(loginBtn, true);
+
+            try {
+                const response = await makeApiRequest(AUTH_ENDPOINTS.login, 'POST', {
+                    email,
+                    password
+                });
+
+                // Handle successful login (redirect or show success)
+                if (response.requiresTwitterConnection) {
+                    showForm('welcomePage');
+                } else {
+                    window.location.href = '/dashboard';
+                }
+            } catch (error) {
+                alert(error.message || 'Login failed. Please check your credentials.');
+            } finally {
+                setButtonLoading(loginBtn, false);
+            }
+        });
+
+        // Forgot Password
+        document.getElementById('forgotPasswordForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const email = document.getElementById('forgotEmail').value;
+
+            if (!email) {
+                alert('Please enter your email address');
+                return;
+            }
+
+            setButtonLoading(forgotPasswordBtn, true);
+
+            try {
+                const response = await makeApiRequest(AUTH_ENDPOINTS.forgotPassword, 'POST', {
+                    email
+                });
+
+                alert('Password reset link sent to your email!');
+                showForm('loginForm');
+            } catch (error) {
+                alert(error.message || 'Failed to send reset link. Please try again.');
+            } finally {
+                setButtonLoading(forgotPasswordBtn, false);
+            }
+        });
+
+        // =============================================
+        // OAuth Providers Implementation
+        // =============================================
+
+        // Google Authentication
+        async function handleGoogleAuth(isLogin = false) {
+            const button = isLogin ? googleLogin : googleSignup;
+            setButtonLoading(button, true);
+
+            try {
+                // In a real implementation, this would redirect to your backend OAuth endpoint
+                // which then redirects to Google's OAuth flow
+                window.location.href = `${API_BASE_URL}${AUTH_ENDPOINTS.googleAuth}?isLogin=${isLogin}`;
+                
+                // Alternatively, you could use Google's client-side SDK:
+                // await handleGoogleClientSideAuth(isLogin);
+            } catch (error) {
+                alert(error.message || 'Google authentication failed');
+                setButtonLoading(button, false);
+            }
+        }
+
+        googleSignup.addEventListener('click', () => handleGoogleAuth(false));
+        googleLogin.addEventListener('click', () => handleGoogleAuth(true));
+
+        // Apple Authentication
+        async function handleAppleAuth(isLogin = false) {
+            const button = isLogin ? appleLogin : appleSignup;
+            setButtonLoading(button, true);
+
+            try {
+                // In a real implementation, this would use Apple's JS SDK
+                // or redirect to your backend OAuth endpoint
+                window.location.href = `${API_BASE_URL}${AUTH_ENDPOINTS.appleAuth}?isLogin=${isLogin}`;
+            } catch (error) {
+                alert(error.message || 'Apple authentication failed');
+                setButtonLoading(button, false);
+            }
+        }
+
+        appleSignup.addEventListener('click', () => handleAppleAuth(false));
+        appleLogin.addEventListener('click', () => handleAppleAuth(true));
+
+        // Twitter Authentication
+        async function handleTwitterAuth(isLogin = false) {
+            const button = isLogin ? twitterLogin : twitterSignup;
+            setButtonLoading(button, true);
+
+            try {
+                // In a real implementation, this would redirect to your backend OAuth endpoint
+                // which then redirects to Twitter's OAuth flow
+                window.location.href = `${API_BASE_URL}${AUTH_ENDPOINTS.twitterAuth}?isLogin=${isLogin}`;
+            } catch (error) {
+                alert(error.message || 'Twitter authentication failed');
+                setButtonLoading(button, false);
+            }
+        }
+
+        twitterSignup.addEventListener('click', () => handleTwitterAuth(false));
+        twitterLogin.addEventListener('click', () => handleTwitterAuth(true));
+
+        // Connect Twitter Account
+        connectTwitterBtn.addEventListener('click', async () => {
+            setButtonLoading(connectTwitterBtn, true);
+
+            try {
+                // Redirect to Twitter OAuth flow for connection
+                window.location.href = `${API_BASE_URL}${AUTH_ENDPOINTS.connectTwitter}`;
+            } catch (error) {
+                alert(error.message || 'Failed to connect Twitter account');
+                setButtonLoading(connectTwitterBtn, false);
+            }
+        });
+
+        // Skip Twitter Connection
+        skipTwitterBtn.addEventListener('click', async () => {
+            setButtonLoading(skipTwitterBtn, true);
+
+            try {
+                // Proceed to dashboard without Twitter connection
+                window.location.href = '/dashboard';
+            } catch (error) {
+                alert(error.message || 'Failed to proceed');
+                setButtonLoading(skipTwitterBtn, false);
+            }
+        });
+
+        // =============================================
+        // Additional Helper Functions
+        // =============================================
+
+        // Handle OAuth callback (would be called after returning from OAuth flow)
+        async function handleOAuthCallback() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const code = urlParams.get('code');
+            const error = urlParams.get('error');
+            const provider = urlParams.get('provider');
+            const isLogin = urlParams.get('isLogin') === 'true';
+
+            if (error) {
+                alert(`Authentication failed: ${error}`);
+                return;
+            }
+
+            if (code && provider) {
+                try {
+                    // Exchange the authorization code for tokens
+                    const response = await makeApiRequest(
+                        `${AUTH_ENDPOINTS[`${provider}Auth`]}/callback`,
+                        'POST',
+                        { code, isLogin }
+                    );
+
+                    if (response.requiresTwitterConnection) {
+                        showForm('welcomePage');
+                    } else {
+                        window.location.href = '/main.html';
+                    }
+                } catch (err) {
+                    alert('Authentication failed. Please try again.');
+                }
+            }
+        }
+
+        // Check for OAuth callback on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            handleOAuthCallback();
+        });
+    </script>
+</body>
+</html>

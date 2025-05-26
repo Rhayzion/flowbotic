@@ -1,0 +1,561 @@
+/* AI Studio - Complete Styling */
+.ai-studio-container {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 2rem;
+}
+
+/* Trainer Card Styles */
+.trainer-card {
+    background: var(--light);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+}
+
+.trainer-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Generator Card Styles */
+.generator-card {
+    background: var(--light);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+}
+
+.generator-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Dark Mode Adjustments */
+.dark-mode .trainer-card,
+.dark-mode .generator-card {
+    background: var(--dark);
+    border-color: var(--border-dark);
+}
+
+/* Card Header */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.card-header h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+/* Training Methods */
+.training-methods {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.method-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    background: var(--lighter);
+    border: none;
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.method-btn:hover {
+    background: var(--primary-light);
+}
+
+.method-btn.active {
+    background: var(--primary);
+    color: white;
+}
+
+/* Method Content Areas */
+.method-content {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.method-content.active {
+    display: block;
+}
+
+/* File Upload Styles */
+.file-upload {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.file-upload input[type="file"] {
+    display: none;
+}
+
+.file-upload label {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    background: var(--lighter);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+}
+
+.file-upload label:hover {
+    background: var(--primary-light);
+    border-color: var(--primary);
+}
+
+#fileNames {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+/* Form Elements */
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--text-primary);
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.875rem;
+    transition: var(--transition);
+    background: var(--light);
+    color: var(--text-primary);
+}
+
+.dark-mode .form-control {
+    background: var(--darker);
+    border-color: var(--border-dark);
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+/* Content Type Selector */
+.content-types {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.type-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    background: var(--lighter);
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.type-btn:hover {
+    background: var(--primary-light);
+}
+
+.type-btn.active {
+    background: var(--primary);
+    color: white;
+}
+
+/* Output Container */
+.output-container {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background: var(--light);
+    transition: var(--transition);
+}
+
+.output-container:hover {
+    box-shadow: var(--shadow-sm);
+}
+
+.dark-mode .output-container {
+    background: var(--darker);
+    border-color: var(--border-dark);
+}
+
+.output-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.output-controls {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* AI Output Area */
+.ai-output {
+    padding: 1rem;
+    background: var(--lighter);
+    border-radius: 6px;
+    min-height: 150px;
+    color: var(--text-primary);
+    position: relative;
+    transition: var(--transition);
+}
+
+.ai-output:hover {
+    box-shadow: inset 0 0 0 1px var(--primary-light);
+}
+
+.dark-mode .ai-output {
+    background: var(--darker);
+}
+
+.placeholder-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: var(--text-tertiary);
+    width: 100%;
+    pointer-events: none;
+}
+
+.placeholder-text i {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    opacity: 0.5;
+    color: var(--primary);
+}
+
+.placeholder-text p {
+    margin: 0;
+    font-size: 0.875rem;
+}
+
+.loading-animation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: var(--text-secondary);
+}
+
+.loading-animation i {
+    animation: spin 1s linear infinite;
+    margin-bottom: 0.5rem;
+    color: var(--primary);
+}
+
+.generated-content {
+    white-space: pre-wrap;
+    line-height: 1.5;
+}
+
+/* Output Actions */
+.output-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+/* Progress Badge */
+.progress-badge {
+    background: var(--lighter);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: var(--transition);
+}
+
+.dark-mode .progress-badge {
+    background: var(--darker);
+}
+
+/* Style Match Indicator */
+.style-match {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+}
+
+.style-match span {
+    font-weight: bold;
+    color: var(--primary);
+}
+
+/* Analysis Panel */
+.analysis-panel {
+    grid-column: span 2;
+    background: var(--light);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 1rem;
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.dark-mode .analysis-panel {
+    background: var(--dark);
+}
+
+.style-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.metric {
+    background: var(--lighter);
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    transition: var(--transition);
+}
+
+.metric:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-sm);
+}
+
+.dark-mode .metric {
+    background: var(--darker);
+}
+
+.metric-label {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+}
+
+.metric-value {
+    font-weight: bold;
+    color: var(--text-primary);
+    font-size: 1rem;
+}
+
+/* Word Cloud */
+.word-cloud-container {
+    margin-top: 1.5rem;
+}
+
+.word-cloud-container h5 {
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.word-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+    padding: 1rem;
+    background: var(--lighter);
+    border-radius: 8px;
+    min-height: 100px;
+}
+
+.dark-mode .word-cloud {
+    background: var(--darker);
+}
+
+.word-cloud span {
+    padding: 0.5rem;
+    border-radius: 4px;
+    background: var(--lighter);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.dark-mode .word-cloud span {
+    background: var(--darker);
+}
+
+.word-cloud span:hover {
+    background: var(--primary);
+    color: white;
+    transform: scale(1.1);
+    cursor: default;
+}
+
+/* Example Pairs */
+.example-pairs {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.example-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+/* Buttons */
+.btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    font-size: 0.875rem;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.8125rem;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow);
+}
+
+.btn-secondary {
+    background: var(--light);
+    color: var(--primary);
+    border: 1px solid var(--border);
+}
+
+.dark-mode .btn-secondary {
+    background: var(--dark);
+}
+
+.btn-secondary:hover {
+    background: var(--lighter);
+    border-color: var(--border-dark);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow);
+}
+
+.btn-success {
+    background: var(--secondary);
+    color: white;
+}
+
+.btn-success:hover {
+    background: var(--secondary-dark);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .ai-studio-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .analysis-panel {
+        grid-column: span 1;
+    }
+    
+    .example-pair {
+        grid-template-columns: 1fr;
+    }
+    
+    .output-actions {
+        justify-content: center;
+    }
+    
+    .output-actions .btn {
+        flex: 1;
+        min-width: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    .training-methods {
+        flex-direction: column;
+    }
+    
+    .method-btn {
+        justify-content: center;
+    }
+    
+    .content-types {
+        flex-direction: column;
+    }
+    
+    .type-btn {
+        justify-content: center;
+    }
+}

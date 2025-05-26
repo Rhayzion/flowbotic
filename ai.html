@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Page title</title>
+</head>
+<body>
+    <!-- Add this to your existing tabs navigation -->
+<a href="#ai-studio" class="nav-item" data-tab="ai-studio">
+  <i class="fas fa-magic"></i> AI Studio
+</a>
+
+<!-- Add this with your other tab-content divs -->
+<div class="tab-content" id="ai-studio">
+  <div class="ai-studio-container">
+    <!-- Personality Trainer Section -->
+    <div class="trainer-card">
+      <div class="card-header">
+        <h3><i class="fas fa-graduation-cap"></i> Teach My AI</h3>
+        <div class="progress-badge" id="trainingProgress">
+          Trained: 0%
+        </div>
+      </div>
+      
+      <div class="training-methods">
+        <button class="method-btn active" data-method="upload">Upload Content</button>
+        <button class="method-btn" data-method="questions">Answer Questions</button>
+        <button class="method-btn" data-method="examples">Provide Examples</button>
+      </div>
+      
+      <div class="method-content active" id="uploadMethod">
+        <textarea id="writingSamples" placeholder="Paste your tweets, blogs, or other writing samples here..."></textarea>
+        <button id="analyzeBtn" class="btn btn-primary">
+          <i class="fas fa-brain"></i> Analyze My Style
+        </button>
+      </div>
+      
+      <div class="method-content" id="questionsMethod">
+        <div class="question">
+          <p>How would you describe your typical writing tone?</p>
+          <select class="form-control">
+            <option>Professional</option>
+            <option>Casual</option>
+            <option>Humorous</option>
+            <option>Inspirational</option>
+            <option>Technical</option>
+          </select>
+        </div>
+        <!-- More questions would go here -->
+        <button class="btn btn-secondary">
+          Save Answers
+        </button>
+      </div>
+      
+      <div class="method-content" id="examplesMethod">
+        <div class="example-pair">
+          <input type="text" class="form-control" placeholder="Generic version">
+          <input type="text" class="form-control" placeholder="Your version">
+        </div>
+        <button class="btn btn-sm btn-outline">
+          <i class="fas fa-plus"></i> Add Another
+        </button>
+      </div>
+    </div>
+    
+    <!-- Content Generator Section -->
+    <div class="generator-card">
+      <div class="card-header">
+        <h3><i class="fas fa-robot"></i> Content Generator</h3>
+        <div class="style-match">
+          <span id="styleMatchPercent">0%</span> Style Match
+        </div>
+      </div>
+      
+      <div class="content-types">
+        <button class="type-btn active" data-type="tweet">Tweet</button>
+        <button class="type-btn" data-type="thread">Thread</button>
+        <button class="type-btn" data-type="reply">Reply</button>
+      </div>
+      
+      <div class="input-group">
+        <label>Topic or Prompt:</label>
+        <input type="text" id="contentPrompt" class="form-control" placeholder="e.g., 'Share a tip about social media growth'">
+      </div>
+      
+      <div class="output-container">
+        <div class="output-header">
+          <span>AI Suggestions</span>
+          <button id="generateBtn" class="btn btn-primary btn-sm">
+            <i class="fas fa-bolt"></i> Generate
+          </button>
+        </div>
+        <div class="ai-output" id="aiOutput">
+          <!-- Generated content will appear here -->
+        </div>
+      </div>
+      
+      <div class="output-actions">
+        <button class="btn btn-outline" id="regenerateBtn">
+          <i class="fas fa-sync-alt"></i> Try Again
+        </button>
+        <button class="btn btn-success" id="scheduleBtn">
+          <i class="fas fa-calendar-plus"></i> Schedule
+        </button>
+        <button class="btn btn-secondary" id="tweakBtn">
+          <i class="fas fa-edit"></i> Tweak
+        </button>
+      </div>
+    </div>
+    
+    <!-- Style Analysis Panel (initially hidden) -->
+    <div class="analysis-panel" id="styleAnalysis">
+      <h4><i class="fas fa-chart-pie"></i> Your Writing Style</h4>
+      <div class="style-metrics">
+        <div class="metric">
+          <div class="metric-label">Tone</div>
+          <div class="metric-value" id="toneValue">Neutral</div>
+        </div>
+        <!-- More metrics would go here -->
+      </div>
+      <div class="word-cloud" id="wordCloud">
+        <!-- Dynamically generated word cloud -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+/* AI Studio Specific Styles */
+.ai-studio-container {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+.trainer-card, .generator-card {
+  background: var(--light);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.training-methods {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.method-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  background: var(--lighter);
+  border: none;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.method-btn.active {
+  background: var(--primary);
+  color: white;
+}
+
+.method-content {
+  display: none;
+}
+
+.method-content.active {
+  display: block;
+}
+
+textarea {
+  width: 100%;
+  min-height: 150px;
+  margin-bottom: 1rem;
+}
+
+.content-types {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.type-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  background: var(--lighter);
+  border: none;
+  cursor: pointer;
+}
+
+.type-btn.active {
+  background: var(--primary);
+  color: white;
+}
+
+.output-container {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.output-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.ai-output {
+  padding: 1rem;
+  background: var(--lighter);
+  border-radius: 6px;
+  min-height: 100px;
+}
+
+.output-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.progress-badge {
+  background: var(--lighter);
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+}
+
+.style-match {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.style-match span {
+  font-weight: bold;
+  color: var(--primary);
+}
+
+.analysis-panel {
+  grid-column: span 2;
+  background: var(--light);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-top: 1rem;
+  display: none;
+}
+
+.style-metrics {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.metric {
+  background: var(--lighter);
+  padding: 1rem;
+  border-radius: 8px;
+  min-width: 100px;
+  text-align: center;
+}
+
+.metric-label {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.metric-value {
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+.word-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.word-cloud span {
+  padding: 0.5rem;
+  border-radius: 4px;
+  background: var(--lighter);
+}
+
+@media (max-width: 768px) {
+  .ai-studio-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .analysis-panel {
+    grid-column: span 1;
+  }
+}
+</style>
+
+<script>
+// Simple client-side AI implementation
+class SimpleAI {
+  constructor() {
+    this.userStyle = {
+      commonWords: {},
+      tone: 'neutral',
+      sentenceLength: 0,
+      samplesCount: 0
+    };
+    this.styleMatch = 0;
+  }
+
+  analyzeText(text) {
+    // Basic text analysis
+    const words = text.toLowerCase().match(/\b[\w']+\b/g) || [];
+    const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0);
+    
+    // Update word frequencies
+    words.forEach(word => {
+      this.userStyle.commonWords[word] = (this.userStyle.commonWords[word] || 0) + 1;
+    });
+    
+    // Update sentence length average
+    const totalLength = this.userStyle.sentenceLength * this.userStyle.samplesCount;
+    const newTotal = totalLength + sentences.reduce((sum, s) => sum + s.split(' ').length, 0);
+    this.userStyle.samplesCount += sentences.length;
+    this.userStyle.sentenceLength = newTotal / this.userStyle.samplesCount;
+    
+    // Very basic tone detection
+    const positiveWords = ['great', 'awesome', 'happy', 'love'];
+    const negativeWords = ['bad', 'hate', 'terrible', 'awful'];
+    
+    const positiveCount = words.filter(w => positiveWords.includes(w)).length;
+    const negativeCount = words.filter(w => negativeWords.includes(w)).length;
+    
+    if (positiveCount > negativeCount + 2) this.userStyle.tone = 'positive';
+    else if (negativeCount > positiveCount + 2) this.userStyle.tone = 'negative';
+    else this.userStyle.tone = 'neutral';
+    
+    // Update training progress
+    const newProgress = Math.min(100, this.userStyle.samplesCount * 2);
+    this.updateTrainingProgress(newProgress);
+  }
+  
+  generateContent(prompt) {
+    if (this.userStyle.samplesCount < 5) {
+      return "Please provide more writing samples so I can learn your style better!";
+    }
+    
+    // Very simple content generation based on learned style
+    const commonWords = Object.entries(this.userStyle.commonWords)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 10)
+      .map(w => w[0]);
+    
+    const sentences = [
+      `Here's a thought about ${prompt}`,
+      `When it comes to ${prompt}, I've found that`,
+      `Many people ask me about ${prompt}`,
+      `My take on ${prompt} is simple:`
+    ];
+    
+    const endings = [
+      "what do you think?",
+      "let me know your thoughts!",
+      "this has worked well for me.",
+      "I'd love to hear your experience."
+    ];
+    
+    // Calculate style match (simplified)
+    this.styleMatch = Math.min(100, Math.floor(this.userStyle.samplesCount * 3));
+    document.getElementById('styleMatchPercent').textContent = `${this.styleMatch}%`;
+    
+    // Generate output based on learned style
+    const baseSentence = sentences[Math.floor(Math.random() * sentences.length)];
+    const ending = endings[Math.floor(Math.random() * endings.length)];
+    
+    // Insert some common words
+    let output = `${baseSentence} ${commonWords.slice(0, 2).join(' ')}... ${ending}`;
+    
+    // Adjust based on tone
+    if (this.userStyle.tone === 'positive') {
+      output = `🚀 ${output} So exciting!`;
+    } else if (this.userStyle.tone === 'negative') {
+      output = `⚠️ Warning: ${output.toLowerCase()}`;
+    }
+    
+    return output;
+  }
+  
+  updateTrainingProgress(percent) {
+    this.trainingProgress = percent;
+    document.getElementById('trainingProgress').textContent = `Trained: ${percent}%`;
+    
+    // Show analysis panel after sufficient training
+    if (percent >= 30) {
+      document.getElementById('styleAnalysis').style.display = 'block';
+      document.getElementById('toneValue').textContent = this.userStyle.tone;
+      this.updateWordCloud();
+    }
+  }
+  
+  updateWordCloud() {
+    const cloud = document.getElementById('wordCloud');
+    cloud.innerHTML = '';
+    
+    const words = Object.entries(this.userStyle.commonWords)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 15);
+    
+    words.forEach(([word, count]) => {
+      const span = document.createElement('span');
+      span.textContent = word;
+      span.style.fontSize = `${Math.min(20, 12 + count)}px`;
+      cloud.appendChild(span);
+    });
+  }
+}
+
+// Initialize the AI
+const userAI = new SimpleAI();
+
+// Set up event listeners
+document.getElementById('analyzeBtn').addEventListener('click', function() {
+  const text = document.getElementById('writingSamples').value;
+  if (text.trim().length < 50) {
+    alert('Please provide at least 50 characters of text for analysis');
+    return;
+  }
+  
+  userAI.analyzeText(text);
+  showToast('Writing style analyzed!', 'success');
+});
+
+document.getElementById('generateBtn').addEventListener('click', function() {
+  const prompt = document.getElementById('contentPrompt').value;
+  if (!prompt) {
+    alert('Please enter a topic or prompt');
+    return;
+  }
+  
+  const output = userAI.generateContent(prompt);
+  document.getElementById('aiOutput').textContent = output;
+});
+
+document.getElementById('regenerateBtn').addEventListener('click', function() {
+  const prompt = document.getElementById('contentPrompt').value;
+  if (!prompt) return;
+  
+  const output = userAI.generateContent(prompt);
+  document.getElementById('aiOutput').textContent = output;
+  showToast('New version generated!', 'info');
+});
+
+// Method switching
+document.querySelectorAll('.method-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.method-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.method-content').forEach(c => c.classList.remove('active'));
+    
+    this.classList.add('active');
+    const method = this.getAttribute('data-method');
+    document.getElementById(`${method}Method`).classList.add('active');
+  });
+});
+
+// Content type switching
+document.querySelectorAll('.type-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+
+// Helper function
+function showToast(message, type) {
+  const toast = document.createElement('div');
+  toast.className = `toast toast-${type}`;
+  toast.innerHTML = `
+    <div class="toast-message">${message}</div>
+    <button class="toast-close" onclick="this.parentElement.remove()">
+      <i class="fas fa-times"></i>
+    </button>
+  `;
+  document.body.appendChild(toast);
+  
+  setTimeout(() => toast.classList.add('show'), 10);
+  setTimeout(() => {
+    toast.classList.remove('show');
+    setTimeout(() => toast.remove(), 300);
+  }, 3000);
+}
+</script>
+</body>
+</html>
