@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automation Dashboard</title>
+    <link rel="stylesheet" href="roughui.css">
+</head>
+<body>
+    <div class="mobile-menu-toggle" id="mobileMenuToggle">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <div class="container">
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-item" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+                <span class="sidebar-text">Menu</span>
+                <span class="sidebar-tooltip">Toggle Menu</span>
+            </div>
+            <div class="sidebar-item" data-tooltip="Automation Dashboard">
+                <i class="fas fa-robot"></i>
+                <span class="sidebar-text">Automations</span>
+                <span class="sidebar-tooltip">Automation Dashboard</span>
+            </div>
+            <div class="sidebar-item" data-tooltip="View Logs">
+                <i class="fas fa-history"></i>
+                <span class="sidebar-text">Logs</span>
+                <span class="sidebar-tooltip">View Logs</span>
+            </div>
+            <div class="sidebar-item" data-tooltip="Settings">
+                <i class="fas fa-cog"></i>
+                <span class="sidebar-text">Settings</span>
+                <span class="sidebar-tooltip">Settings</span>
+            </div>
+            <div class="sidebar-item" onclick="toggleTheme()" style="margin-top: auto;" data-tooltip="Switch Theme">
+                <i class="fas fa-moon"></i>
+                <span class="sidebar-text">Toggle Theme</span>
+                <span class="sidebar-tooltip">Switch Theme</span>
+            </div>
+        </div>
+
+        <div class="automation-container" id="mainContent">
+            <div class="page-header">
+                <h1 class="page-title">
+                    <i class="fas fa-robot"></i>
+                    Automation Dashboard
+                </h1>
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="masterToggle" checked>
+                            <span class="slider"></span>
+                        </label>
+                        <span id="masterToggleText">All Active</span>
+                    </div>
+                    <button class="btn btn-secondary" data-tooltip="Get Help">
+                        <i class="fas fa-question-circle"></i> <span class="mobile-hidden">Help</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="fas fa-tachometer-alt"></i>
+                            Automation Health
+                        </h3>
+                        <span class="badge">
+                            92/100
+                        </span>
+                    </div>
+                    <div class="stats-grid">
+                        <div>
+                            <div style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Active</div>
+                            <div style="font-size: 1.25rem; font-weight: 700;">6/8</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Actions</div>
+                            <div style="font-size: 1.25rem; font-weight: 700;">42</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Time Saved</div>
+                            <div style="font-size: 1.25rem; font-weight: 700;">9.2h</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Engagement</div>
+                            <div style="font-size: 1.25rem; font-weight: 700;">+22%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="fas fa-bolt"></i>
+                            Quick Actions
+                        </h3>
+                    </div>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                        <button class="btn btn-primary btn-sm">
+                            <i class="fas fa-sync-alt"></i> <span class="mobile-hidden">Refresh</span>
+                        </button>
+                        <button class="btn btn-secondary btn-sm">
+                            <i class="fas fa-history"></i> <span class="mobile-hidden">Logs</span>
+                        </button>
+                        <button class="btn btn-secondary btn-sm">
+                            <i class="fas fa-sliders-h"></i> <span class="mobile-hidden">Settings</span>
+                        </button>
+                        <button class="btn btn-sm" style="background: var(--danger);">
+                            <i class="fas fa-stop-circle"></i> <span class="mobile-hidden">Stop</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        <i class="fas fa-user-tag"></i>
+                        User Targeting
+                    </h3>
+                    <button class="btn btn-primary btn-sm" id="addUserRuleBtn">
+                        <i class="fas fa-plus"></i> <span class="mobile-hidden">Add Rule</span>
+                    </button>
+                </div>
+
+                <div class="rule-card swipeable" id="rule1">
+                    <div class="swipe-content">
+                        <div class="rule-header">
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                                <strong><span class="status-indicator status-active"></span> @TechInfluencer posts:</strong>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-secondary btn-sm">
+                                    <i class="fas fa-pen"></i>
+                                </button>
+                                <button class="btn btn-secondary btn-sm" onclick="deleteRule('rule1')">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="rule-actions">
+                            <div class="action-item">
+                                <i class="fas fa-reply" style="color: var(--primary);"></i>
+                                <span>Reply with template: <strong>ExpertResponse</strong></span>
+                            </div>
+                            <div class="action-item">
+                                <i class="fas fa-retweet" style="color: var(--primary);"></i>
+                                <span>Retweet if engagement > 200 likes</span>
+                            </div>
+                            <div class="action-item">
+                                <i class="fas fa-bookmark" style="color: var(--primary);"></i>
+                                <span>Bookmark for later review</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swipe-actions">
+                        <button onclick="deleteRule('rule1')"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+
+                <div class="rule-card swipeable" id="rule2">
+                    <div class="swipe-content">
+                        <div class="rule-header">
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                                <strong><span class="status-indicator status-active"></span> @OurCustomer comments:</strong>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-secondary btn-sm">
+                                    <i class="fas fa-pen"></i>
+                                </button>
+                                <button class="btn btn-secondary btn-sm" onclick="deleteRule('rule2')">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="rule-actions">
+                            <div class="action-item">
+                                <i class="fas fa-comment-dots" style="color: var(--primary);"></i>
+                                <span>Reply: "Have you tried our solution?"</span>
+                            </div>
+                            <div class="action-item">
+                                <i class="fas fa-link" style="color: var(--primary);"></i>
+                                <span>Include link to comparison guide</span>
+                            </div>
+                            <div class="action-item">
+                                <i class="fas fa-clock" style="color: var(--primary);"></i>
+                                <span>Wait 15 minutes before responding</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swipe-actions">
+                        <button onclick="deleteRule('rule2')"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        <i class="fas fa-key"></i>
+                        Keyword Targeting
+                    </h3>
+                    <button class="btn btn-primary btn-sm" id="addKeywordRuleBtn">
+                        <i class="fas fa-plus"></i> <span class="mobile-hidden">Add Rule</span>
+                    </button>
+                </div>
+
+                <div class="grid-2">
+                    <div>
+                        <h4 style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 0.75rem;">Target Keywords</h4>
+                        <div class="chips-container">
+                            <span class="chip" onclick="removeChip(this)">
+                                #AI <i class="fas fa-times"></i>
+                            </span>
+                            <span class="chip" onclick="removeChip(this)">
+                                #Marketing <i class="fas fa-times"></i>
+                            </span>
+                            <span class="chip" onclick="removeChip(this)">
+                                "best tool for" <i class="fas fa-times"></i>
+                            </span>
+                            <div style="display: flex; align-items: center;">
+                                <input type="text" placeholder="Add..." class="form-control" style="width: 100px;">
+                                <button class="btn btn-sm" style="margin-left: 0.25rem;" onclick="addKeyword()">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 0.75rem;">Excluded Terms</h4>
+                        <div class="chips-container">
+                            <span class="chip chip-danger" onclick="removeChip(this)">
+                                scam <i class="fas fa-times"></i>
+                            </span>
+                            <span class="chip chip-danger" onclick="removeChip(this)">
+                                "free download" <i class="fas fa-times"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rule-card" style="margin-top: 1rem;">
+                    <div class="rule-header">
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                            <strong><span class="status-indicator status-active"></span> "best CRM":</strong>
+                        </div>
+                        <div>
+                            <span style="background: var(--primary); padding: 0.25rem 0.5rem; border-radius: 999px; font-size: 0.75rem;">High</span>
+                        </div>
+                    </div>
+                    <div class="rule-actions">
+                        <div class="action-item">
+                            <i class="fas fa-comment" style="color: var(--primary);"></i>
+                            <span>Comment: "Our CRM solution offers..."</span>
+                        </div>
+                        <div class="action-item">
+                            <i class="fas fa-user-tag" style="color: var(--primary);"></i>
+                            <span>Tag @SalesLead in response</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="fas fa-shield-alt"></i>
+                            Safety Controls
+                        </h3>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Max Daily Actions</label>
+                        <input type="range" min="10" max="100" value="40" class="form-control">
+                        <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-secondary);">
+                            <span>10</span>
+                            <span>40</span>
+                            <span>100</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Action Delay</label>
+                        <select class="form-control">
+                            <option>Random (30-90 sec)</option>
+                            <option>Human-like (2-5 min)</option>
+                        </select>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem;">
+                            <input type="checkbox" checked>
+                            Skip controversial topics
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem;">
+                            <input type="checkbox" checked>
+                            Never reply to negative
+                        </label>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="fas fa-clock"></i>
+                            Scheduling
+                        </h3>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Active Hours</label>
+                        <div style="display: flex; gap: 0.5rem; align-items: center;">
+                            <select class="form-control">
+                                <option>9:00 AM</option>
+                                <option>10:00 AM</option>
+                            </select>
+                            <span>to</span>
+                            <select class="form-control">
+                                <option>8:00 PM</option>
+                                <option>9:00 PM</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Time Zone</label>
+                        <select class="form-control">
+                            <option>Local Time</option>
+                            <option>UTC</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="form-label">Best Times</label>
+                        <div style="background: rgba(67, 97, 238, 0.1); padding: 0.75rem; border-radius: 8px; font-size: 0.875rem;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <span>9:00 AM - 11:00 AM</span>
+                                <span>High</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span>7:00 PM - 9:00 PM</span>
+                                <span>Peak</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        <i class="fas fa-history"></i>
+                        Recent Activity
+                    </h3>
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <span style="font-size: 0.875rem; color: var(--text-secondary);" id="activityUpdate">Updated just now</span>
+                        <button class="btn btn-secondary btn-sm" onclick="refreshActivity()">
+                            <i class="fas fa-sync-alt"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="activity-table-container">
+                    <table class="activity-table">
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Action</th>
+                                <th>Target</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="activityTable">
+                            <tr>
+                                <td>09:02 AM</td>
+                                <td>Replied</td>
+                                <td>@TechPost</td>
+                                <td style="color: var(--success);">✅ Success</td>
+                            </tr>
+                            <tr>
+                                <td>09:15 AM</td>
+                                <td>Liked</td>
+                                <td>@Startup</td>
+                                <td style="color: var(--danger);">❌ Failed</td>
+                            </tr>
+                            <tr>
+                                <td>09:30 AM</td>
+                                <td>Scheduled</td>
+                                <td>"AI trends..."</td>
+                                <td style="color: var(--warning);">⏳ Pending</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="fab">
+            <button class="fab-btn" id="fabBtn">
+                <i class="fas fa-bolt"></i>
+            </button>
+        </div>
+    </div>
+    <script src="roughui.js"></script>
+</body>
+</html>
