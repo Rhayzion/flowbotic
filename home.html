@@ -3,17 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FlowBotic: AI-powered Twitter automation to grow your audience and engagement effortlessly.">
+    <meta property="og:title" content="FlowBotic - AI-Powered Twitter Automation">
+    <meta property="og:description" content="Revolutionize your Twitter growth with FlowBotic's advanced AI tools.">
+    <meta property="og:image" content="https://yourdomain.com/images/og-image.jpg">
     <title>FlowBotic - AI-Powered Twitter Automation</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <link rel="stylesheet" href="home.css">
 </head>
 <body>
     <!-- Navigation -->
     <div class="navbar-container">
-        <nav class="navbar" id="navbar">
-            <a href="#" class="logo">
+        <nav class="navbar glass" id="navbar" role="navigation" aria-label="Main navigation">
+            <a href="#" class="logo" aria-label="FlowBotic Home">
                 <div class="logo-icon">
                     <i class="fas fa-robot"></i>
                 </div>
@@ -28,8 +32,8 @@
             </ul>
 
             <div class="nav-actions">
-                <a href="/register.html" class="btn btn-primary desktop-btn">Get Started</a>
-                <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <a href="../register/register.html" class="btn btn-primary desktop-btn" data-animate="pulse">Get Started</a>
+                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open mobile menu">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
@@ -37,23 +41,23 @@
     </div>
 
     <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobile-menu">
-        <button class="mobile-menu-close" id="mobile-menu-close">
+    <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation">
+        <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Close mobile menu">
             <i class="fas fa-times"></i>
         </button>
-        <ul class="mobile-menu-links">
+        <ul class="mobile-menu-links flow">
             <li class="mobile-menu-link"><a href="#features">Features</a></li>
             <li class="mobile-menu-link"><a href="#pricing">Pricing</a></li>
             <li class="mobile-menu-link"><a href="#testimonials">Testimonials</a></li>
             <li class="mobile-menu-link"><a href="#faq">FAQ</a></li>
         </ul>
         <div class="mobile-menu-actions">
-            <a href="#!" class="btn btn-primary">Get Started</a>
+            <a href="../register/register.html" class="btn btn-primary" data-animate="pulse">Get Started</a>
         </div>
     </div>
     
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="hero" aria-labelledby="hero-title">
         <div class="background-blobs">
             <div class="blob"></div>
             <div class="blob"></div>
@@ -62,18 +66,18 @@
         <div class="particles" id="particles"></div>
         <div class="container">
             <div class="hero-content">
-                <div class="hero-text">
-                    <h1 class="hero-title">Revolutionize Your Twitter Growth with AI</h1>
+                <div class="hero-text flow">
+                    <h1 class="hero-title" id="hero-title">Revolutionize Your Twitter Growth with AI</h1>
                     <p class="hero-subtitle">FlowBotic's advanced artificial intelligence automates your Twitter strategy, saving you hours while accelerating your audience growth and engagement.</p>
                     <div class="cta-buttons">
-                        <a href="#!" class="btn btn-primary">
+                        <a href="../register/register.html" class="btn btn-primary glass" data-animate="pulse">
                             <i class="fas fa-rocket"></i> Start Free Trial
                         </a>
-                        <a href="#!" class="btn btn-secondary">
+                        <a href="#!" class="btn btn-secondary glass" data-animate="pulse">
                             <i class="fas fa-play-circle"></i> Watch Demo
                         </a>
                     </div>
-                    <div class="trust-badges">
+                    <div class="trust-badges flow">
                         <div class="badge">
                             <i class="fas fa-shield-alt"></i>
                             <span>Twitter API Compliant</span>
@@ -84,18 +88,20 @@
                         </div>
                     </div>
                 </div>
-                <div class="hero-image-container">
-                    <img src="dash.png" alt="FlowBotic Dashboard" class="dashboard-mockup floating">
+                <div class="hero-image-container" data-tilt>
+                    <!-- Optional: Replace with video for dynamic effect -->
+                    <!-- <video src="dashboard-demo.mp4" autoplay loop muted playsinline class="dashboard-mockup" loading="lazy"></video> -->
+                    <img src="dash.png" alt="FlowBotic Dashboard Preview" class="dashboard-mockup floating" loading="lazy">
                     <div class="floating-elements">
-                        <div class="floating-element" style="top: 10%; left: -10%;">
+                        <div class="floating-element glass" style="top: 10%; left: -10%;">
                             <i class="fas fa-robot"></i>
                             <span>AI-Powered Automation</span>
                         </div>
-                        <div class="floating-element" style="top: 30%; right: -10%;">
+                        <div class="floating-element glass" style="top: 30%; right: -10%;">
                             <i class="fas fa-chart-line"></i>
                             <span>Real-time Analytics</span>
                         </div>
-                        <div class="floating-element" style="bottom: 20%; left: -10%;">
+                        <div class="floating-element glass" style="bottom: 20%; left: -10%;">
                             <i class="fas fa-magic"></i>
                             <span>Smart Content Generation</span>
                         </div>
@@ -106,14 +112,14 @@
     </section>
 
     <!-- Features Section -->
-    <section class="features" id="features">
+    <section class="features" id="features" aria-labelledby="features-title">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Powerful Features</h2>
+            <div class="section-header flow">
+                <h2 class="section-title" id="features-title">Powerful Features</h2>
                 <p class="section-subtitle">Everything you need to automate and optimize your Twitter presence with cutting-edge AI technology</p>
             </div>
             <div class="features-grid">
-                <div class="feature-card">
+                <div class="feature-card glass" data-animate="card">
                     <div class="feature-icon">
                         <i class="fas fa-brain"></i>
                     </div>
@@ -123,7 +129,7 @@
                         Learn more <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card glass" data-animate="card">
                     <div class="feature-icon">
                         <i class="fas fa-clock"></i>
                     </div>
@@ -133,7 +139,7 @@
                         Learn more <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card glass" data-animate="card">
                     <div class="feature-icon">
                         <i class="fas fa-heart"></i>
                     </div>
@@ -143,7 +149,7 @@
                         Learn more <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card glass" data-animate="card">
                     <div class="feature-icon">
                         <i class="fas fa-chart-pie"></i>
                     </div>
@@ -153,7 +159,7 @@
                         Learn more <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card glass" data-animate="card">
                     <div class="feature-icon">
                         <i class="fas fa-users"></i>
                     </div>
@@ -163,7 +169,7 @@
                         Learn more <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card glass" data-animate="card">
                     <div class="feature-icon">
                         <i class="fas fa-shield-alt"></i>
                     </div>
@@ -178,22 +184,22 @@
     </section>
 
     <!-- Stats Section -->
-    <section class="stats">
+    <section class="stats" aria-labelledby="stats-title">
         <div class="container">
             <div class="stats-container">
-                <div class="stat-item">
+                <div class="stat-item" data-animate="stat">
                     <div class="stat-number" data-count="12500">0</div>
                     <div class="stat-label">Active Users</div>
                 </div>
-                <div class="stat-item">
+                <div class="stat-item" data-animate="stat">
                     <div class="stat-number" data-count="420">0</div>
                     <div class="stat-label">Avg. Follower Growth</div>
                 </div>
-                <div class="stat-item">
+                <div class="stat-item" data-animate="stat">
                     <div class="stat-number" data-count="95">0</div>
                     <div class="stat-label">Engagement Increase</div>
                 </div>
-                <div class="stat-item">
+                <div class="stat-item" data-animate="stat">
                     <div class="stat-number" data-count="18">0</div>
                     <div class="stat-label">Hours Saved Weekly</div>
                 </div>
@@ -202,10 +208,10 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section class="testimonials" id="testimonials">
+    <section class="testimonials" id="testimonials" aria-labelledby="testimonials-title">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Trusted by Creators</h2>
+            <div class="section-header flow">
+                <h2 class="section-title" id="testimonials-title">Trusted by Creators</h2>
                 <p class="section-subtitle">Join thousands of creators, marketers, and businesses growing their audience with FlowBotic</p>
             </div>
             
@@ -213,12 +219,12 @@
                 <div class="swiper">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <div class="testimonial-card">
+                            <div class="testimonial-card glass" data-animate="card">
                                 <div class="testimonial-content">
                                     FlowBotic has completely transformed my Twitter presence. I've gained over 15,000 followers in 3 months while spending less than 10 minutes a day managing my account.
                                 </div>
                                 <div class="testimonial-author">
-                                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah J." class="author-avatar">
+                                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah J., Content Creator" class="author-avatar" loading="lazy">
                                     <div class="author-info">
                                         <h4>Sarah J.</h4>
                                         <p>Content Creator</p>
@@ -227,12 +233,12 @@
                             </div>
                         </div>
                         <div class="swiper-slide">
-                            <div class="testimonial-card">
+                            <div class="testimonial-card glass" data-animate="card">
                                 <div class="testimonial-content">
                                     The AI content generation is mind-blowing. It captures my voice perfectly and suggests topics I wouldn't have thought of. My engagement rates have doubled since I started using FlowBotic.
                                 </div>
                                 <div class="testimonial-author">
-                                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael T." class="author-avatar">
+                                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael T., Marketing Director" class="author-avatar" loading="lazy">
                                     <div class="author-info">
                                         <h4>Michael T.</h4>
                                         <p>Marketing Director</p>
@@ -241,12 +247,12 @@
                             </div>
                         </div>
                         <div class="swiper-slide">
-                            <div class="testimonial-card">
+                            <div class="testimonial-card glass" data-animate="card">
                                 <div class="testimonial-content">
                                     As a small business owner, I don't have time for social media. FlowBotic handles everything for me and has brought in so many new customers through Twitter. Worth every penny!
                                 </div>
                                 <div class="testimonial-author">
-                                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Lisa M." class="author-avatar">
+                                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Lisa M., Small Business Owner" class="author-avatar" loading="lazy">
                                     <div class="author-info">
                                         <h4>Lisa M.</h4>
                                         <p>Small Business Owner</p>
@@ -255,12 +261,12 @@
                             </div>
                         </div>
                         <div class="swiper-slide">
-                            <div class="testimonial-card">
+                            <div class="testimonial-card glass" data-animate="card">
                                 <div class="testimonial-content">
                                     I was skeptical about automation, but FlowBotic's AI is so natural that my engagement actually improved. The analytics dashboard is incredibly insightful too.
                                 </div>
                                 <div class="testimonial-author">
-                                    <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="David R." class="author-avatar">
+                                    <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="David R., Tech Entrepreneur" class="author-avatar" loading="lazy">
                                     <div class="author-info">
                                         <h4>David R.</h4>
                                         <p>Tech Entrepreneur</p>
@@ -269,28 +275,28 @@
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev" aria-label="Previous testimonial"></div>
+                    <div class="swiper-button-next" aria-label="Next testimonial"></div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Pricing Section -->
-    <section class="pricing" id="pricing">
+    <section class="pricing" id="pricing" aria-labelledby="pricing-title">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Simple, Transparent Pricing</h2>
+            <div class="section-header flow">
+                <h2 class="section-title" id="pricing-title">Simple, Transparent Pricing</h2>
                 <p class="section-subtitle">Choose the plan that fits your needs. No hidden fees, cancel anytime.</p>
             </div>
             <div class="pricing-grid">
-                <div class="pricing-card">
-                    <div class="pricing-header">
+                <div class="pricing-card glass" data-animate="card">
+                    <div class="pricing-header flow">
                         <h3 class="pricing-title">Starter</h3>
                         <div class="pricing-price">$29</div>
                         <div class="pricing-period">per month</div>
                     </div>
-                    <div class="pricing-features">
+                    <div class="pricing-features flow">
                         <div class="pricing-feature">
                             <i class="fas fa-check"></i>
                             <span>1 Twitter Account</span>
@@ -308,15 +314,15 @@
                             <span>Basic Analytics</span>
                         </div>
                     </div>
-                    <a href="#!" class="pricing-btn">Get Started</a>
+                    <a href="#" class="pricing-btn" data-animate="pulse">Get Started</a>
                 </div>
-                <div class="pricing-card popular">
-                    <div class="pricing-header">
+                <div class="pricing-card popular glass" data-animate="card">
+                    <div class="pricing-header flow">
                         <h3 class="pricing-title">Professional</h3>
                         <div class="pricing-price">$79</div>
                         <div class="pricing-period">per month</div>
                     </div>
-                    <div class="pricing-features">
+                    <div class="pricing-features flow">
                         <div class="pricing-feature">
                             <i class="fas fa-check"></i>
                             <span>3 Twitter Accounts</span>
@@ -338,15 +344,15 @@
                             <span>Priority Support</span>
                         </div>
                     </div>
-                    <a href="#!" class="pricing-btn">Get Started</a>
+                    <a href="#" class="pricing-btn" data-animate="pulse">Get Started</a>
                 </div>
-                <div class="pricing-card">
-                    <div class="pricing-header">
+                <div class="pricing-card glass" data-animate="card">
+                    <div class="pricing-header flow">
                         <h3 class="pricing-title">Agency</h3>
                         <div class="pricing-price">$199</div>
                         <div class="pricing-period">per month</div>
                     </div>
-                    <div class="pricing-features">
+                    <div class="pricing-features flow">
                         <div class="pricing-feature">
                             <i class="fas fa-check"></i>
                             <span>10 Twitter Accounts</span>
@@ -368,22 +374,22 @@
                             <span>Dedicated Account Manager</span>
                         </div>
                     </div>
-                    <a href="#!" class="pricing-btn">Get Started</a>
+                    <a href="#" class="pricing-btn" data-animate="pulse">Get Started</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- FAQ Section -->
-    <section class="faq" id="faq">
+    <section class="faq" id="faq" aria-labelledby="faq-title">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="section-header flow">
+                <h2 class="section-title" id="faq-title">Frequently Asked Questions</h2>
                 <p class="section-subtitle">Everything you need to know about FlowBotic. Can't find an answer? Contact our team.</p>
             </div>
-            <div class="faq-container">
-                <div class="faq-item">
-                    <div class="faq-question">
+            <div class="faq-container flow">
+                <div class="faq-item" data-animate="fade">
+                    <div class="faq-question" role="button" aria-expanded="false">
                         <span>Is FlowBotic safe to use with Twitter?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
@@ -393,8 +399,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="faq-item">
-                    <div class="faq-question">
+                <div class="faq-item" data-animate="fade">
+                    <div class="faq-question" role="button" aria-expanded="false">
                         <span>How does the AI content generation work?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
@@ -404,8 +410,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="faq-item">
-                    <div class="faq-question">
+                <div class="faq-item" data-animate="fade">
+                    <div class="faq-question" role="button" aria-expanded="false">
                         <span>Can I try FlowBotic before committing?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
@@ -415,8 +421,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="faq-item">
-                    <div class="faq-question">
+                <div class="faq-item" data-animate="fade">
+                    <div class="faq-question" role="button" aria-expanded="false">
                         <span>What kind of results can I expect?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
@@ -431,19 +437,19 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="cta">
+    <section class="cta" aria-labelledby="cta-title">
         <div class="background-blobs">
             <div class="blob"></div>
             <div class="blob"></div>
         </div>
         <div class="container">
-            <div class="cta-container">
-                <h2 class="cta-title">Ready to Transform Your Twitter Growth?</h2>
+            <div class="cta-container flow">
+                <h2 class="cta-title" id="cta-title">Ready to Transform Your Twitter Growth?</h2>
                 <p class="cta-text">Join thousands of creators and businesses growing their audience with FlowBotic's AI-powered automation.</p>
-                <a href="#!" class="btn btn-primary cta-btn">
+                <a href="../register/register.html" class="btn btn-primary cta-btn glass" data-animate="pulse">
                     <i class="fas fa-rocket"></i> Start Your Free Trial
                 </a>
-                <div class="trust-badges">
+                <div class="trust-badges flow">
                     <div class="badge">
                         <i class="fas fa-lock"></i>
                         <span>Secure Payment</span>
@@ -462,10 +468,10 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="container">
             <div class="footer-container">
-                <div class="footer-col">
+                <div class="footer-col flow">
                     <div class="footer-logo">
                         <div class="footer-logo-icon">
                             <i class="fas fa-robot"></i>
@@ -474,41 +480,41 @@
                     </div>
                     <p class="footer-description">AI-powered Twitter automation that helps you grow your audience while saving time.</p>
                     <div class="social-links">
-                        <a href="#!" class="social-link">
+                        <a href="#!" class="social-link glass" aria-label="Twitter">
                             <i class="fab fa-twitter"></i>
                         </a>
-                        <a href="#!" class="social-link">
+                        <a href="#!" class="social-link glass" aria-label="LinkedIn">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
-                        <a href="#!" class="social-link">
+                        <a href="#!" class="social-link glass" aria-label="Instagram">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="#!" class="social-link">
+                        <a href="#!" class="social-link glass" aria-label="YouTube">
                             <i class="fab fa-youtube"></i>
                         </a>
                     </div>
                 </div>
-                <div class="footer-col">
+                <div class="footer-col flow">
                     <h3 class="footer-heading">Product</h3>
-                    <ul class="footer-links">
+                    <ul class="footer-links flow">
                         <li class="footer-link"><a href="#features">Features <i class="fas fa-arrow-right"></i></a></li>
                         <li class="footer-link"><a href="#pricing">Pricing <i class="fas fa-arrow-right"></i></a></li>
                         <li class="footer-link"><a href="#!">Integrations <i class="fas fa-arrow-right"></i></a></li>
                         <li class="footer-link"><a href="#!">Roadmap <i class="fas fa-arrow-right"></i></a></li>
                     </ul>
                 </div>
-                <div class="footer-col">
+                <div class="footer-col flow">
                     <h3 class="footer-heading">Resources</h3>
-                    <ul class="footer-links">
+                    <ul class="footer-links flow">
                         <li class="footer-link"><a href="#!">Documentation <i class="fas fa-arrow-right"></i></a></li>
                         <li class="footer-link"><a href="#!">Blog <i class="fas fa-arrow-right"></i></a></li>
                         <li class="footer-link"><a href="#!">Guides <i class="fas fa-arrow-right"></i></a></li>
                         <li class="footer-link"><a href="#!">API <i class="fas fa-arrow-right"></i></a></li>
                     </ul>
                 </div>
-                <div class="footer-col">
+                <div class="footer-col flow">
                     <h3 class="footer-heading">Company</h3>
-                    <ul class="footer-links">
+                    <ul class="footer-links flow">
                         <li class="footer-link"><a href="#!">About <i class="fas fa-arrow-right"></i></a></li>
                         <li class="footer-link"><a href="#!">Careers <i class="fas fa-arrow-right"></i></a></li>
                         <li class="footer-link"><a href="#!">Privacy <i class="fas fa-arrow-right"></i></a></li>
@@ -516,7 +522,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
+            <div class="footer-bottom flow">
                 <div>© 2025 FlowBotic. All rights reserved.</div>
                 <div class="footer-legal">
                     <a href="#!">Privacy Policy</a>
@@ -527,10 +533,10 @@
         </div>
     </footer>
 
-    <!-- GSAP & Scripts -->
-     <script src="home.js"></script>
+    <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-   </body>
+    <script src="home.js"></script>
+</body>
 </html>
